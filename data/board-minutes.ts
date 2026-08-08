@@ -54,14 +54,7 @@ export const boardMinutesByYear: BoardMinuteYear[] = [
       { date: "August 27, 2024", filename: "8. Plato Township Minutes Aug-27-2024.pdf" },
       { date: "September 24, 2024", filename: "9. Plato Township Minutes Sept-24-2024.pdf" },
       { date: "November 26, 2024", filename: "11. Plato Township Minutes 11-26-2024.pdf" },
+      { date: "November 26, 2024", filename: "11. Plato Dicennial Committee Minutes 3 (1).pdf", description: "Decennial Committee Minutes" },
     ],
-  },
-];
-
-export const supplementaryMinuteDocuments: BoardMinuteDocument[] = [
-  {
-    date: "Date not stated in filename",
-    filename: "11. Plato Dicennial Committee Minutes 3 (1).pdf",
-    description: "Decennial Committee Minutes",
   },
 ];

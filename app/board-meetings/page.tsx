@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import MeetingSchedule from "@/components/meetings/MeetingSchedule";
 import { siteConfig } from "@/config/site";
-import { completeMeetingSchedule2026 } from "@/data/board-meetings";
 
 export const metadata: Metadata = {
   title: "Board Meetings",
@@ -52,20 +52,7 @@ export default function BoardMeetingsPage() {
               </p>
             </div>
 
-            <div className="border-t border-(--line)">
-              {completeMeetingSchedule2026.map((meeting) => (
-                <article
-                  key={`${meeting.date}-${meeting.type}`}
-                  className={`grid gap-3 border-b border-(--line) px-1 py-5 sm:grid-cols-[1fr_auto] sm:items-center ${meeting.type === "annual" ? "border-l-4 border-l-(--red) bg-(--mist) px-5" : ""}`}
-                >
-                  <div>
-                    <h3 className="text-lg font-semibold text-(--navy)">{meeting.date}</h3>
-                    <p className="mt-1 text-base text-(--ink-muted)">{meeting.label}</p>
-                  </div>
-                  <p className="text-base font-semibold text-(--navy)">{meeting.time}</p>
-                </article>
-              ))}
-            </div>
+            <MeetingSchedule />
           </div>
         </div>
       </section>

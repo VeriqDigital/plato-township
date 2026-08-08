@@ -1,7 +1,25 @@
+"use client";
+
 import Link from "next/link";
-import { upcomingBoardMeetings2026 } from "@/data/board-meetings";
+import { useEffect, useState } from "react";
+import { getUpcomingMeetings } from "@/data/board-meetings";
 
 const MeetingsSection = () => {
+  const [currentDate, setCurrentDate] = useState<Date | null>(null);
+
+  useEffect(() => {
+    const refreshDate = () => setCurrentDate(new Date());
+    const animationFrame = window.requestAnimationFrame(refreshDate);
+    const interval = window.setInterval(refreshDate, 60_000);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrame);
+      window.clearInterval(interval);
+    };
+  }, []);
+
+  const meetings = currentDate ? getUpcomingMeetings(currentDate, 3) : [];
+
   return (
     <section id="meetings" className="bg-(--navy) py-20 text-white sm:py-24">
       <div className="mx-auto max-w-(--container-width) px-6">
@@ -23,7 +41,7 @@ const MeetingsSection = () => {
           </div>
 
           <div className="border-t border-white/20">
-            {upcomingBoardMeetings2026.map((meeting) => (
+            {meetings.map((meeting) => (
               <article
                 key={`${meeting.month}-${meeting.day}`}
                 className="grid grid-cols-[4.5rem_1fr] gap-6 border-b border-white/16 py-6 sm:grid-cols-[6rem_1fr_auto] sm:items-center"
@@ -49,6 +67,11 @@ const MeetingsSection = () => {
                 </Link>
               </article>
             ))}
+            {currentDate && meetings.length === 0 && (
+              <p className="border-b border-white/16 py-8 text-base text-white/70">
+                No additional 2026 meetings are currently scheduled.
+              </p>
+            )}
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { boardMinutesByYear, supplementaryMinuteDocuments } from "@/data/board-minutes";
+import { boardMinutesByYear } from "@/data/board-minutes";
 
 export const metadata: Metadata = {
   title: "Board Minutes",
@@ -26,7 +26,7 @@ export default function BoardMinutesPage() {
       <section className="bg-white py-14 sm:py-16">
         <div className="mx-auto max-w-5xl px-6">
           <p className="max-w-3xl text-base leading-7 text-(--ink-muted)">
-            Select a meeting date to open the original PDF in a new browser tab. Document filenames are shown exactly as provided by the township.
+            Select a meeting date to open the original PDF in a new browser tab.
           </p>
 
           <div className="mt-10 space-y-12">
@@ -41,7 +41,6 @@ export default function BoardMinutesPage() {
                       <div className="min-w-0">
                         <h3 className="text-lg font-semibold text-(--navy)">{document.date}</h3>
                         {document.description && <p className="mt-1 text-sm font-semibold text-(--red-dark)">{document.description}</p>}
-                        <p className="mt-1 break-words text-sm leading-6 text-(--ink-muted)">{document.filename}</p>
                       </div>
                       <a
                         href={documentHref(document.filename)}
@@ -57,28 +56,6 @@ export default function BoardMinutesPage() {
               </section>
             ))}
 
-            <section aria-labelledby="supplementary-records">
-              <h2 id="supplementary-records" className="border-b-2 border-(--navy) pb-3 text-3xl font-semibold text-(--navy)">
-                Other Public Meeting Records
-              </h2>
-              {supplementaryMinuteDocuments.map((document) => (
-                <article key={document.filename} className="grid gap-4 border-b border-(--line) py-5 sm:grid-cols-[1fr_auto] sm:items-center">
-                  <div className="min-w-0">
-                    <h3 className="text-lg font-semibold text-(--navy)">{document.description}</h3>
-                    <p className="mt-1 text-sm text-(--ink-muted)">{document.date}</p>
-                    <p className="mt-1 break-words text-sm leading-6 text-(--ink-muted)">{document.filename}</p>
-                  </div>
-                  <a
-                    href={documentHref(document.filename)}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex w-fit items-center border border-(--navy) px-4 py-2.5 text-sm font-semibold text-(--navy) transition hover:bg-(--navy) hover:text-white"
-                  >
-                    Open PDF
-                  </a>
-                </article>
-              ))}
-            </section>
           </div>
         </div>
       </section>
