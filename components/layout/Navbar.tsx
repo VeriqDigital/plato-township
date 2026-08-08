@@ -72,7 +72,22 @@ const Navbar = () => {
         </Link>
 
         <div className="ml-auto hidden h-full items-stretch xl:flex">
-          {navigation.map((group, index) => {
+          {navigation.map((item, index) => {
+            if ("href" in item) {
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onMouseEnter={() => setOpenDropdown(null)}
+                  onFocus={() => setOpenDropdown(null)}
+                  className="flex items-center border-b-2 border-transparent px-4 text-[13px] font-semibold text-white/76 transition-colors hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              );
+            }
+
+            const group = item;
             const isOpen = openDropdown === index;
 
             return (
@@ -152,7 +167,24 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="max-h-[calc(100svh-5rem)] overflow-y-auto border-t border-white/10 bg-(--navy) px-5 pb-7 text-white xl:hidden">
           <div className="mx-auto max-w-(--container-width)">
-            {navigation.map((group, index) => {
+            {navigation.map((item, index) => {
+              if ("href" in item) {
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      setOpenDropdown(null);
+                    }}
+                    className="block border-b border-white/12 py-4 text-sm font-semibold"
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+
+              const group = item;
               const isOpen = openDropdown === index;
               return (
                 <div key={group.label} className="border-b border-white/12">
