@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { services } from "@/data/services";
+import { departments } from "@/data/departments";
 
-const ServicesSection = ({ showIntro = true }: { showIntro?: boolean }) => {
+const DepartmentsSection = ({ showIntro = true }: { showIntro?: boolean }) => {
   return (
     <div>
       {showIntro && (
@@ -16,17 +16,17 @@ const ServicesSection = ({ showIntro = true }: { showIntro?: boolean }) => {
       )}
 
       <div className={`${showIntro ? "mt-9" : ""} border-t border-(--line)`}>
-        {services.map((service) => (
+        {departments.map((department) => (
           <Link
-            key={service.title}
-            id={service.id}
-            href={`/services#${service.id}`}
+            key={department.title}
+            id={department.id}
+            href={`/services#${department.id}`}
             className="grid gap-3 border-b border-(--line) py-5 transition hover:bg-(--mist) sm:grid-cols-[1fr_1.2fr_auto] sm:items-center sm:px-5"
           >
             <h3 className="text-xl font-semibold text-(--navy)">
-              {service.title}
+              {department.title}
             </h3>
-            <p className="text-base leading-7 text-(--ink-muted)">{service.description}</p>
+            <p className="text-base leading-7 text-(--ink-muted)">{department.description}</p>
             <span className="text-sm font-semibold text-(--navy) underline decoration-(--line) underline-offset-4">View department</span>
           </Link>
         ))}
@@ -35,4 +35,4 @@ const ServicesSection = ({ showIntro = true }: { showIntro?: boolean }) => {
   );
 };
 
-export default ServicesSection;
+export default DepartmentsSection;

@@ -1,4 +1,4 @@
-export const resources = [
+export const communityResources = [
   {
     question: "Kane County services",
     answer:

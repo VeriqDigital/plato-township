@@ -1,6 +1,6 @@
-import { resources } from "@/data/faq";
+import { communityResources } from "@/data/community-resources";
 
-const FAQ = () => {
+const CommunityResourcesSection = () => {
   return (
     <div className="grid gap-9 lg:grid-cols-[0.72fr_1.28fr]">
       <div>
@@ -12,7 +12,7 @@ const FAQ = () => {
       </div>
 
       <div className="grid sm:grid-cols-2">
-        {resources.map((item, index) => (
+        {communityResources.map((item, index) => (
           <article
             key={item.question}
             className={`border-(--line) p-6 ${
@@ -30,4 +30,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default CommunityResourcesSection;

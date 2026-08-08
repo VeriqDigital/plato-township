@@ -128,10 +128,10 @@ const Navbar = () => {
         </div>
 
         <Link
-          href="tel:8474644228"
+          href={`tel:${siteConfig.contact.supervisorPhone.replaceAll("-", "")}`}
           className="ml-auto hidden border border-white/25 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-(--red) hover:bg-(--red) lg:inline-flex xl:ml-4"
         >
-          847-464-4228
+          {siteConfig.contact.supervisorPhone}
         </Link>
 
         <button
@@ -186,11 +186,11 @@ const Navbar = () => {
               );
             })}
             <Link
-              href="tel:8474644228"
+              href={`tel:${siteConfig.contact.supervisorPhone.replaceAll("-", "")}`}
               className="mt-6 flex w-full items-center justify-between bg-white px-5 py-4 text-sm font-bold text-(--navy)"
             >
               Call the Township Office
-              <span>847-464-4228</span>
+              <span>{siteConfig.contact.supervisorPhone}</span>
             </Link>
           </div>
         </div>

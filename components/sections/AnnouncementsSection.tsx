@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { announcements } from "@/data/testimonials";
+import { announcements } from "@/data/announcements";
 
-const TestimonialsSection = () => {
+const AnnouncementsSection = () => {
   return (
     <div>
       <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
@@ -47,4 +47,4 @@ const TestimonialsSection = () => {
   );
 };
 
-export default TestimonialsSection;
+export default AnnouncementsSection;

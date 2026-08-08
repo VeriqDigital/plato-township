@@ -37,7 +37,12 @@ const Footer = () => {
             <div>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/38">Township office</p>
               <p className="mt-5 text-sm leading-6 text-white/62">{siteConfig.contact.address}</p>
-              <a href="tel:8474644228" className="mt-4 block font-heading text-2xl text-white">847-464-4228</a>
+              <a
+                href={`tel:${siteConfig.contact.supervisorPhone.replaceAll("-", "")}`}
+                className="mt-4 block font-heading text-2xl text-white"
+              >
+                {siteConfig.contact.supervisorPhone}
+              </a>
               <p className="mt-3 text-xs text-white/38">Please call ahead before visiting.</p>
             </div>
           </div>
