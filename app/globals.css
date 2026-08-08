@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0b2442;
+  --navy-deep: #07172b;
+  --red: #a9323b;
+  --red-dark: #8e2630;
+  --red-light: #e48387;
+  --warm-white: #f8f7f3;
+  --mist: #edf2f5;
+  --ink: #17283a;
+  --ink-muted: #607080;
+  --line: #d6dde2;
+  --background: #f8f7f3;
+  --surface: #ffffff;
+  --surface-hover: #edf2f5;
+  --foreground: #17283a;
+  --muted: #607080;
+  --primary: #a9323b;
+  --primary-hover: #8e2630;
+  --border: #d6dde2;
+  --container-width: 1320px;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-oswald);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--red-light);
+  outline-offset: 3px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: var(--red);
+  font-size: 0.7rem;
+  font-weight: 750;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  content: "";
+}
+
+.section-title {
+  max-width: 48rem;
+  color: var(--navy);
+  font-family: var(--font-heading), Impact, sans-serif;
+  font-size: clamp(3rem, 6vw, 5.3rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  text-transform: uppercase;
+}
+
+::selection {
+  background: var(--red);
+  color: #fff;
+}
