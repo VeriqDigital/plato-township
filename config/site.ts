@@ -5,9 +5,11 @@ export const siteConfig = {
   url: "https://plato-township-demo.example.com",
   locale: "en_US",
   contact: {
-    supervisorPhone: "847-464-4228",
-    roadPhone: "847-464-5121",
+    officePhone: "847-464-4228",
+    highwayPhone: "847-464-5121",
     assessorPhone: "847-464-4221",
+    supervisorAlternatePhone: "847-654-7787",
+    supervisorEmail: "supervisor@platotownship.com",
     streetAddress: "10N924 Rippburger Road",
     address: "10N924 Rippburger Road, Elgin, IL 60124",
     mapUrl:
@@ -24,7 +26,11 @@ type NavigationLink = {
 
 type NavigationGroup = {
   label: string;
-  items: NavigationLink[];
+  href?: string;
+  items: Array<{
+    label: string;
+    href?: string;
+  }>;
 };
 
 type NavigationItem = NavigationLink | NavigationGroup;
@@ -39,14 +45,15 @@ export const navigation: NavigationItem[] = [
   },
   {
     label: "Township Departments",
+    href: "/departments",
     items: [
-      { label: "Supervisor", href: "/services#supervisor" },
-      { label: "Highway Department", href: "/services#highway" },
-      { label: "Township Clerk", href: "/services#clerk" },
-      { label: "Assessor", href: "/services#assessor" },
-      { label: "Property Search", href: "/services#assessor" },
-      { label: "Cemetery District", href: "/services" },
-      { label: "Board of Trustees", href: "/services#trustees" },
+      { label: "Supervisor", href: "/departments/supervisor" },
+      { label: "Highway Department" },
+      { label: "Township Clerk" },
+      { label: "Assessor" },
+      { label: "Property Search" },
+      { label: "Cemetery District" },
+      { label: "Board of Trustees" },
     ],
   },
   {
@@ -73,7 +80,7 @@ export const navigation: NavigationItem[] = [
 export const footerLinks = [
   { label: "Township Postings", href: "/#postings" },
   { label: "Meetings", href: "/#meetings" },
-  { label: "Departments", href: "/services" },
+  { label: "Departments", href: "/departments" },
   { label: "Community Links", href: "/#community" },
   { label: "Contact", href: "/contact" },
 ] as const;

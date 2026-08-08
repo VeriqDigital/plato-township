@@ -65,7 +65,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-3xl px-6">
           <h2 className="text-3xl font-semibold tracking-tight text-(--navy) sm:text-4xl">Find the office you need</h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-7 text-(--ink-muted)">Explore department responsibilities, then contact the township office if you are not sure where to begin.</p>
-          <Link href="/services" className="mt-7 inline-flex items-center bg-(--red) px-6 py-3 text-sm font-semibold text-white transition hover:bg-(--red-dark)">View departments</Link>
+          <Link href="/departments" className="mt-7 inline-flex items-center bg-(--red) px-6 py-3 text-sm font-semibold text-white transition hover:bg-(--red-dark)">View departments</Link>
         </div>
       </section>
     </main>
