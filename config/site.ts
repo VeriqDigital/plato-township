@@ -27,49 +27,45 @@ type NavigationGroup = {
   items: NavigationLink[];
 };
 
-export const navigation: NavigationGroup[] = [
+type NavigationItem = NavigationLink | NavigationGroup;
+
+export const navigation: NavigationItem[] = [
   {
     label: "Township Postings",
     items: [
-      { label: "Latest Announcements", href: "/#postings" },
-      { label: "Upcoming Meetings", href: "/#meetings" },
-      { label: "Agendas & Minutes", href: "/#meetings" },
-      { label: "Public Notices", href: "/#postings" },
+      { label: "Board Meetings", href: "/board-meetings" },
+      { label: "Board Minutes", href: "/board-minutes" },
     ],
   },
   {
     label: "Township Departments",
     items: [
-      { label: "Supervisor's Office", href: "/services#supervisor" },
+      { label: "Supervisor", href: "/services#supervisor" },
+      { label: "Highway Department", href: "/services#highway" },
       { label: "Township Clerk", href: "/services#clerk" },
       { label: "Assessor", href: "/services#assessor" },
-      { label: "Highway Department", href: "/services#highway" },
+      { label: "Property Search", href: "/services#assessor" },
+      { label: "Cemetery District", href: "/services" },
       { label: "Board of Trustees", href: "/services#trustees" },
     ],
   },
   {
     label: "Community Links",
     items: [
-      { label: "Resident Resources", href: "/#community" },
-      { label: "Kane County Services", href: "/#community" },
-      { label: "Emergency Information", href: "/#community" },
-      { label: "Forms & Documents", href: "/#community" },
+      { label: "Fire Departments", href: "/#community" },
+      { label: "Local Weather", href: "/#community" },
+      { label: "Local News", href: "/#community" },
+      { label: "Trash", href: "/#community" },
+      { label: "Plato Park", href: "/#community" },
     ],
   },
+  { label: "About Us", href: "/about" },
   {
-    label: "About Us",
+    label: "More",
     items: [
-      { label: "About Plato Township", href: "/about" },
-      { label: "Elected Officials", href: "/about#officials" },
-      { label: "Our Community", href: "/about#community" },
-    ],
-  },
-  {
-    label: "Contact",
-    items: [
-      { label: "Township Office", href: "/contact" },
-      { label: "Phone Directory", href: "/contact#directory" },
-      { label: "Directions", href: "/contact#directions" },
+      { label: "Elections", href: "/about" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Archive", href: "/#postings" },
     ],
   },
 ];
