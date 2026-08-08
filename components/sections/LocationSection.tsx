@@ -3,8 +3,8 @@ import { siteConfig } from "@/config/site";
 
 const LocationSection = () => {
   const phoneDirectory = [
-    ["Township Supervisor", siteConfig.contact.supervisorPhone],
-    ["Road Commissioner", siteConfig.contact.roadPhone],
+    ["Township Office", siteConfig.contact.officePhone],
+    ["Highway Commissioner", siteConfig.contact.highwayPhone],
     ["Township Assessor", siteConfig.contact.assessorPhone],
   ];
 

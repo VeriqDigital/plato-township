@@ -73,7 +73,7 @@ const Navbar = () => {
 
         <div className="ml-auto hidden h-full items-stretch xl:flex">
           {navigation.map((item, index) => {
-            if ("href" in item) {
+            if (!("items" in item)) {
               return (
                 <Link
                   key={item.label}
@@ -97,28 +97,45 @@ const Navbar = () => {
                 onMouseEnter={() => setOpenDropdown(index)}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
-                <button
-                  type="button"
-                  onClick={() => setOpenDropdown(isOpen ? null : index)}
-                  onFocus={() => setOpenDropdown(index)}
-                  aria-haspopup="menu"
-                  aria-expanded={isOpen}
-                  className={`flex items-center border-b-2 px-4 text-[13px] font-semibold transition-colors ${
-                    isOpen
-                      ? "border-(--red) bg-white/5 text-white"
-                      : "border-transparent text-white/76 hover:text-white"
-                  }`}
-                >
-                  {group.label}
-                  <Chevron open={isOpen} />
-                </button>
+                {group.href ? (
+                  <Link
+                    href={group.href}
+                    onFocus={() => setOpenDropdown(index)}
+                    aria-haspopup="menu"
+                    aria-expanded={isOpen}
+                    className={`flex items-center border-b-2 px-4 text-[13px] font-semibold transition-colors ${
+                      isOpen
+                        ? "border-(--red) bg-white/5 text-white"
+                        : "border-transparent text-white/76 hover:text-white"
+                    }`}
+                  >
+                    {group.label}
+                    <Chevron open={isOpen} />
+                  </Link>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setOpenDropdown(isOpen ? null : index)}
+                    onFocus={() => setOpenDropdown(index)}
+                    aria-haspopup="menu"
+                    aria-expanded={isOpen}
+                    className={`flex items-center border-b-2 px-4 text-[13px] font-semibold transition-colors ${
+                      isOpen
+                        ? "border-(--red) bg-white/5 text-white"
+                        : "border-transparent text-white/76 hover:text-white"
+                    }`}
+                  >
+                    {group.label}
+                    <Chevron open={isOpen} />
+                  </button>
+                )}
 
                 {isOpen && (
                   <div
                     role="menu"
                     className="absolute right-0 top-full min-w-64 border-t-2 border-(--red) bg-white p-2 text-(--navy) shadow-[0_22px_50px_rgba(4,18,36,0.28)]"
                   >
-                    {group.items.map((item) => (
+                    {group.items.map((item) => item.href ? (
                       <Link
                         key={`${group.label}-${item.label}`}
                         href={item.href}
@@ -134,6 +151,18 @@ const Navbar = () => {
                           →
                         </span>
                       </Link>
+                    ) : (
+                      <span
+                        key={`${group.label}-${item.label}`}
+                        role="menuitem"
+                        aria-disabled="true"
+                        className="flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold text-(--ink-muted)"
+                      >
+                        {item.label}
+                        <span className="text-[10px] font-medium uppercase tracking-[0.1em] text-(--ink-muted)">
+                          Coming soon
+                        </span>
+                      </span>
                     ))}
                   </div>
                 )}
@@ -143,10 +172,10 @@ const Navbar = () => {
         </div>
 
         <Link
-          href={`tel:${siteConfig.contact.supervisorPhone.replaceAll("-", "")}`}
+          href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
           className="ml-auto hidden border border-white/25 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-(--red) hover:bg-(--red) lg:inline-flex xl:ml-4"
         >
-          {siteConfig.contact.supervisorPhone}
+          {siteConfig.contact.officePhone}
         </Link>
 
         <button
@@ -168,7 +197,7 @@ const Navbar = () => {
         <div className="max-h-[calc(100svh-5rem)] overflow-y-auto border-t border-white/10 bg-(--navy) px-5 pb-7 text-white xl:hidden">
           <div className="mx-auto max-w-(--container-width)">
             {navigation.map((item, index) => {
-              if ("href" in item) {
+              if (!("items" in item)) {
                 return (
                   <Link
                     key={item.label}
@@ -188,18 +217,42 @@ const Navbar = () => {
               const isOpen = openDropdown === index;
               return (
                 <div key={group.label} className="border-b border-white/12">
-                  <button
-                    type="button"
-                    onClick={() => setOpenDropdown(isOpen ? null : index)}
-                    aria-expanded={isOpen}
-                    className="flex w-full items-center justify-between py-4 text-left text-sm font-semibold"
-                  >
-                    {group.label}
-                    <Chevron open={isOpen} />
-                  </button>
+                  {group.href ? (
+                    <div className="flex items-center">
+                      <Link
+                        href={group.href}
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setOpenDropdown(null);
+                        }}
+                        className="flex-1 py-4 text-sm font-semibold"
+                      >
+                        {group.label}
+                      </Link>
+                      <button
+                        type="button"
+                        onClick={() => setOpenDropdown(isOpen ? null : index)}
+                        aria-label={`Toggle ${group.label} menu`}
+                        aria-expanded={isOpen}
+                        className="px-3 py-4"
+                      >
+                        <Chevron open={isOpen} />
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setOpenDropdown(isOpen ? null : index)}
+                      aria-expanded={isOpen}
+                      className="flex w-full items-center justify-between py-4 text-left text-sm font-semibold"
+                    >
+                      {group.label}
+                      <Chevron open={isOpen} />
+                    </button>
+                  )}
                   {isOpen && (
                     <div className="grid gap-1 pb-4">
-                      {group.items.map((item) => (
+                      {group.items.map((item) => item.href ? (
                         <Link
                           key={`${group.label}-mobile-${item.label}`}
                           href={item.href}
@@ -211,6 +264,14 @@ const Navbar = () => {
                         >
                           {item.label}
                         </Link>
+                      ) : (
+                        <span
+                          key={`${group.label}-mobile-${item.label}`}
+                          aria-disabled="true"
+                          className="border-l border-white/18 py-2 pl-4 text-sm text-white/40"
+                        >
+                          {item.label}
+                        </span>
                       ))}
                     </div>
                   )}
@@ -218,11 +279,11 @@ const Navbar = () => {
               );
             })}
             <Link
-              href={`tel:${siteConfig.contact.supervisorPhone.replaceAll("-", "")}`}
+              href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
               className="mt-6 flex w-full items-center justify-between bg-white px-5 py-4 text-sm font-bold text-(--navy)"
             >
               Call the Township Office
-              <span>{siteConfig.contact.supervisorPhone}</span>
+              <span>{siteConfig.contact.officePhone}</span>
             </Link>
           </div>
         </div>

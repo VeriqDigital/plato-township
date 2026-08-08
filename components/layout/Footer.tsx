@@ -38,10 +38,10 @@ const Footer = () => {
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/38">Township office</p>
               <p className="mt-5 text-sm leading-6 text-white/62">{siteConfig.contact.address}</p>
               <a
-                href={`tel:${siteConfig.contact.supervisorPhone.replaceAll("-", "")}`}
+                href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
                 className="mt-4 block font-heading text-2xl text-white"
               >
-                {siteConfig.contact.supervisorPhone}
+                {siteConfig.contact.officePhone}
               </a>
               <p className="mt-3 text-xs text-white/38">Please call ahead before visiting.</p>
             </div>
@@ -50,7 +50,20 @@ const Footer = () => {
 
         <div className="flex flex-col gap-3 pt-6 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/35 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; 2026 {siteConfig.name}. Demo website.</p>
-          <p>Not an official source for township notices.</p>
+          <div className="flex flex-col gap-2 sm:items-end">
+            <p>Not an official source for township notices.</p>
+            <p className="font-normal normal-case tracking-normal text-white/30">
+              Website designed &amp; developed by{" "}
+              <a
+                href="https://www.veriqdigital.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-white/20 underline-offset-4 transition hover:text-white/60"
+              >
+                Veriq
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

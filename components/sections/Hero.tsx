@@ -46,7 +46,7 @@ const Hero = () => {
               href="#departments"
               className="inline-flex items-center gap-8 border border-white/40 bg-white/5 px-6 py-4 text-xs font-bold uppercase tracking-[0.15em] backdrop-blur-sm transition hover:bg-white hover:text-(--navy)"
             >
-              Township services <span aria-hidden="true">→</span>
+              Township departments <span aria-hidden="true">→</span>
             </Link>
           </div>
         </div>
@@ -59,7 +59,7 @@ const Hero = () => {
               ["Township Office", siteConfig.contact.streetAddress],
               [
                 "Need assistance?",
-                `Call ${siteConfig.contact.supervisorPhone}`,
+                `Call ${siteConfig.contact.officePhone}`,
               ],
               ["Quick access", "Meetings & public notices"],
             ].map(([label, value], index) => (
