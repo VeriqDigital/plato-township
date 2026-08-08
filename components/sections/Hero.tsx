@@ -7,7 +7,7 @@ const Hero = () => {
   return (
     <section className="relative isolate min-h-[calc(100svh-5rem)] overflow-hidden bg-(--navy)">
       <Image
-        src="/plato-township-hero.png"
+        src="/banner.jpg"
         alt="A country road crossing farmland near a red barn at sunrise"
         fill
         priority
@@ -28,7 +28,8 @@ const Hero = () => {
             <span className="block text-white/72">Plato Township</span>
           </h1>
           <p className="mt-7 text-base font-medium tracking-[0.08em] text-white/78 sm:text-lg">
-            Plato Township <span className="mx-2 text-(--red)">|</span> Kane County, Illinois
+            Plato Township <span className="mx-2 text-(--red)">|</span> Kane
+            County, Illinois
           </p>
           <p className="mt-6 max-w-xl text-base leading-7 text-white/68 sm:text-lg">
             Township news, meeting information, public services, and community
@@ -56,7 +57,10 @@ const Hero = () => {
           <div className="grid sm:grid-cols-3">
             {[
               ["Township Office", siteConfig.contact.streetAddress],
-              ["Need assistance?", `Call ${siteConfig.contact.supervisorPhone}`],
+              [
+                "Need assistance?",
+                `Call ${siteConfig.contact.supervisorPhone}`,
+              ],
               ["Quick access", "Meetings & public notices"],
             ].map(([label, value], index) => (
               <div
@@ -66,7 +70,9 @@ const Hero = () => {
                 <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/46">
                   {label}
                 </p>
-                <p className="mt-1 text-sm font-semibold text-white/88">{value}</p>
+                <p className="mt-1 text-sm font-semibold text-white/88">
+                  {value}
+                </p>
               </div>
             ))}
           </div>
