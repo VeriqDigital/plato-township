@@ -8,23 +8,22 @@ const meetings = [
 
 const MeetingsSection = () => {
   return (
-    <section id="meetings" className="bg-(--navy) py-24 text-white sm:py-30">
+    <section id="meetings" className="bg-(--navy) py-20 text-white sm:py-24">
       <div className="mx-auto max-w-(--container-width) px-6">
         <div className="grid gap-14 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
-            <p className="eyebrow text-white/55 before:bg-(--red)">Public meetings</p>
-            <h2 className="mt-5 max-w-lg font-heading text-5xl font-medium uppercase leading-[0.98] sm:text-7xl">
-              Your township at work
+            <h2 className="max-w-lg font-heading text-5xl font-medium uppercase leading-[0.98] sm:text-6xl">
+              Township Meetings
             </h2>
-            <p className="mt-6 max-w-md text-sm leading-7 text-white/62">
+            <p className="mt-6 max-w-md text-base leading-7 text-white/72">
               Follow upcoming public meetings and find agendas and minutes in
               one consistent location. Dates below are sample demo content.
             </p>
             <Link
               href="#postings"
-              className="mt-9 inline-flex items-center gap-8 border border-white/30 px-5 py-3 text-xs font-bold uppercase tracking-[0.15em] transition hover:bg-white hover:text-(--navy)"
+              className="mt-8 inline-flex items-center border border-white/30 px-5 py-3 text-sm font-semibold transition hover:bg-white hover:text-(--navy)"
             >
-              View all meetings <span>→</span>
+              View all meetings
             </Link>
           </div>
 
@@ -41,17 +40,17 @@ const MeetingsSection = () => {
                   </p>
                 </div>
                 <div>
-                  <p className="mb-1 text-[9px] font-bold uppercase tracking-[0.17em] text-white/40">
+                  <p className="mb-1 text-xs font-medium text-white/45">
                     Sample schedule
                   </p>
-                  <h3 className="font-heading text-2xl font-medium uppercase">{meeting.title}</h3>
-                  <p className="mt-1 text-sm text-white/55">Township Office · {meeting.time}</p>
+                  <h3 className="text-xl font-semibold">{meeting.title}</h3>
+                  <p className="mt-1 text-base text-white/65">Township Office · {meeting.time}</p>
                 </div>
                 <Link
                   href="#postings"
-                  className="col-start-2 text-xs font-bold uppercase tracking-[0.14em] text-white/65 hover:text-white sm:col-start-auto"
+                  className="col-start-2 text-sm font-semibold text-white/70 underline decoration-white/25 underline-offset-4 hover:text-white sm:col-start-auto"
                 >
-                  Details →
+                  Details
                 </Link>
               </article>
             ))}

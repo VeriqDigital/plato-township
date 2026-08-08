@@ -13,20 +13,17 @@ export default function Home() {
     <main>
       <Hero />
 
-      <section id="about" className="bg-white py-22 sm:py-28">
+      <section id="about" className="bg-white py-16 sm:py-20">
         <div className="mx-auto grid max-w-(--container-width) gap-10 px-6 lg:grid-cols-[0.6fr_1.4fr] lg:items-start">
-          <p className="eyebrow">Welcome home</p>
+          <h2 className="text-2xl font-semibold text-(--navy)">About Plato Township</h2>
           <div>
-            <h2 className="max-w-4xl font-heading text-5xl font-medium uppercase leading-[1.02] text-(--navy) sm:text-7xl">
-              Local government.<br />Close to home.
-            </h2>
-            <div className="mt-8 grid gap-7 border-t border-(--line) pt-7 md:grid-cols-2">
-              <p className="text-base leading-7 text-(--ink-muted)">
+            <div className="grid gap-7 border-t border-(--line) pt-6 md:grid-cols-2">
+              <p className="text-[1.05rem] leading-8 text-(--ink-muted)">
                 Plato Township serves residents in western Kane County with
                 essential local services, responsive public leadership, and
                 access to trusted community resources.
               </p>
-              <p className="text-base leading-7 text-(--ink-muted)">
+              <p className="text-[1.05rem] leading-8 text-(--ink-muted)">
                 This demo brings the township’s information into a modern,
                 accessible home base designed around the questions residents
                 ask most often.
@@ -50,7 +47,7 @@ export default function Home() {
         <FAQ />
       </Section>
 
-      <section id="contact" className="bg-(--warm-white) py-20 sm:py-28">
+      <section id="contact" className="bg-(--warm-white) py-16 sm:py-20">
         <div className="mx-auto max-w-(--container-width) px-6">
           <LocationSection />
         </div>

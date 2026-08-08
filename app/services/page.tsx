@@ -10,21 +10,20 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <main>
-      <header className="bg-(--navy) py-20 text-white sm:py-28">
+      <header className="bg-(--navy) py-16 text-white sm:py-20">
         <div className="mx-auto max-w-(--container-width) px-6">
-          <p className="eyebrow text-white/55 before:bg-(--red)">Township departments</p>
-          <h1 className="mt-5 max-w-4xl font-heading text-6xl font-medium uppercase leading-[0.96] sm:text-8xl">Services for residents</h1>
+          <h1 className="max-w-4xl font-heading text-5xl font-medium uppercase leading-[0.96] sm:text-7xl">Township Departments</h1>
           <p className="mt-7 max-w-2xl text-lg leading-8 text-white/62">A practical directory of township offices and the public services they provide.</p>
         </div>
       </header>
       <Section className="bg-white">
-        <ServicesSection />
+        <ServicesSection showIntro={false} />
       </Section>
-      <section className="bg-(--mist) py-20">
+      <section className="bg-(--mist) py-16">
         <div className="mx-auto max-w-3xl px-6 text-center">
-          <p className="eyebrow justify-center before:hidden">Not sure where to start?</p>
-          <h2 className="mt-5 font-heading text-5xl font-medium uppercase text-(--navy)">Call the township office</h2>
-          <a href="tel:8474644228" className="mt-6 inline-block font-heading text-3xl text-(--red)">847-464-4228</a>
+          <h2 className="text-3xl font-semibold tracking-tight text-(--navy)">Not sure where to start?</h2>
+          <p className="mt-3 text-base text-(--ink-muted)">Call the township office and we will help direct your question.</p>
+          <a href="tel:8474644228" className="mt-5 inline-block text-2xl font-semibold text-(--red)">847-464-4228</a>
         </div>
       </section>
     </main>

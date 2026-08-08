@@ -74,14 +74,13 @@ a:focus-visible {
 }
 
 .section-title {
-  max-width: 48rem;
+  max-width: 42rem;
   color: var(--navy);
-  font-family: var(--font-heading), Impact, sans-serif;
-  font-size: clamp(3rem, 6vw, 5.3rem);
-  font-weight: 500;
-  letter-spacing: -0.025em;
-  line-height: 0.98;
-  text-transform: uppercase;
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-size: clamp(2.15rem, 4vw, 3.4rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
 }
 
 ::selection {
