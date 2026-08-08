@@ -1,6 +1,5 @@
 export const siteConfig = {
   name: "Plato Township",
-  shortName: "Plato",
   description:
     "Official information and community resources for Plato Township in Kane County, Illinois.",
   url: "https://plato-township-demo.example.com",
@@ -9,6 +8,7 @@ export const siteConfig = {
     supervisorPhone: "847-464-4228",
     roadPhone: "847-464-5121",
     assessorPhone: "847-464-4221",
+    streetAddress: "10N924 Rippburger Road",
     address: "10N924 Rippburger Road, Elgin, IL 60124",
     mapUrl:
       "https://maps.google.com/?q=10N924+Rippburger+Road+Elgin+IL+60124",
@@ -17,13 +17,12 @@ export const siteConfig = {
   },
 } as const;
 
-export type NavigationLink = {
+type NavigationLink = {
   label: string;
   href: string;
-  description?: string;
 };
 
-export type NavigationGroup = {
+type NavigationGroup = {
   label: string;
   items: NavigationLink[];
 };

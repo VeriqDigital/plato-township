@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import ServicesSection from "@/components/sections/ServicesSection";
+import DepartmentsSection from "@/components/sections/DepartmentsSection";
 import Section from "@/components/ui/Section";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Township Departments",
@@ -17,13 +18,18 @@ export default function ServicesPage() {
         </div>
       </header>
       <Section className="bg-white">
-        <ServicesSection showIntro={false} />
+        <DepartmentsSection showIntro={false} />
       </Section>
       <section className="bg-(--mist) py-16">
         <div className="mx-auto max-w-3xl px-6 text-center">
           <h2 className="text-3xl font-semibold tracking-tight text-(--navy)">Not sure where to start?</h2>
           <p className="mt-3 text-base text-(--ink-muted)">Call the township office and we will help direct your question.</p>
-          <a href="tel:8474644228" className="mt-5 inline-block text-2xl font-semibold text-(--red)">847-464-4228</a>
+          <a
+            href={`tel:${siteConfig.contact.supervisorPhone.replaceAll("-", "")}`}
+            className="mt-5 inline-block text-2xl font-semibold text-(--red)"
+          >
+            {siteConfig.contact.supervisorPhone}
+          </a>
         </div>
       </section>
     </main>

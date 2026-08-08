@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
+import { siteConfig } from "@/config/site";
 
 const Hero = () => {
   return (
@@ -54,8 +55,8 @@ const Hero = () => {
         <Container>
           <div className="grid sm:grid-cols-3">
             {[
-              ["Township Office", "10N924 Rippburger Road"],
-              ["Need assistance?", "Call 847-464-4228"],
+              ["Township Office", siteConfig.contact.streetAddress],
+              ["Need assistance?", `Call ${siteConfig.contact.supervisorPhone}`],
               ["Quick access", "Meetings & public notices"],
             ].map(([label, value], index) => (
               <div
