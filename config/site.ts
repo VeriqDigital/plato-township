@@ -9,7 +9,10 @@ export const siteConfig = {
     highwayPhone: "847-464-5121",
     assessorPhone: "847-464-4221",
     supervisorAlternatePhone: "847-654-7787",
+    supervisorOfficeEmail: "Supervisor@PlatoTwp.gov",
     supervisorEmail: "supervisor@platotownship.com",
+    highwayEmail: "PlatoHighway@Comcast.net",
+    assessorEmail: "Assessor@PlatoTownship.com",
     streetAddress: "10N924 Rippburger Road",
     address: "10N924 Rippburger Road, Elgin, IL 60124",
     mapUrl:

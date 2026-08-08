@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
-const LocationSection = () => {
+type LocationSectionProps = {
+  locationOnly?: boolean;
+};
+
+const LocationSection = ({ locationOnly = false }: LocationSectionProps) => {
   const phoneDirectory = [
     ["Township Office", siteConfig.contact.officePhone],
     ["Highway Commissioner", siteConfig.contact.highwayPhone],
@@ -12,28 +16,34 @@ const LocationSection = () => {
     <div className="grid overflow-hidden bg-white shadow-[0_24px_70px_rgba(14,35,62,0.12)] lg:grid-cols-[0.92fr_1.08fr]">
       <div className="bg-(--navy) p-8 text-white sm:p-10 lg:p-12">
         <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-          Contact Information
+          {locationOnly ? "Visit Us" : "Contact Information"}
         </h2>
-        <p className="mt-4 max-w-md text-base leading-7 text-white/72">
-          Contact the appropriate township office for assistance, public records,
-          property questions, or road district information.
-        </p>
+        {!locationOnly && (
+          <>
+            <p className="mt-4 max-w-md text-base leading-7 text-white/72">
+              Contact the appropriate township office for assistance, public records,
+              property questions, or road district information.
+            </p>
 
-        <div id="directory" className="mt-7 border-t border-white/18">
-          {phoneDirectory.map(([label, phone]) => (
-            <a
-              key={label}
-              href={`tel:${phone.replaceAll("-", "")}`}
-              className="flex items-center justify-between gap-4 border-b border-white/14 py-4 text-base transition hover:text-(--red-light)"
-            >
-              <span className="text-white/70">{label}</span>
-              <span className="font-semibold">{phone}</span>
-            </a>
-          ))}
-        </div>
+            <div id="directory" className="mt-7 border-t border-white/18">
+              {phoneDirectory.map(([label, phone]) => (
+                <a
+                  key={label}
+                  href={`tel:${phone.replaceAll("-", "")}`}
+                  className="flex items-center justify-between gap-4 border-b border-white/14 py-4 text-base transition hover:text-(--red-light)"
+                >
+                  <span className="text-white/70">{label}</span>
+                  <span className="font-semibold">{phone}</span>
+                </a>
+              ))}
+            </div>
+          </>
+        )}
 
-        <div className="mt-7">
-          <p className="text-sm font-semibold text-white/65">Township office</p>
+        <div className={locationOnly ? "mt-7 border-t border-white/18 pt-6" : "mt-7"}>
+          <p className="text-sm font-semibold text-white/65">
+            {locationOnly ? "Plato Township Hall / Township Office" : "Township office"}
+          </p>
           <p className="mt-2 max-w-xs text-base leading-7">{siteConfig.contact.address}</p>
           <Link
             href={siteConfig.contact.mapUrl}
