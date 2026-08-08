@@ -30,7 +30,7 @@ const LocationSection = ({ locationOnly = false }: LocationSectionProps) => {
                 <a
                   key={label}
                   href={`tel:${phone.replaceAll("-", "")}`}
-                  className="flex items-center justify-between gap-4 border-b border-white/14 py-4 text-base transition hover:text-(--red-light)"
+                  className="flex min-h-14 flex-col items-start justify-center gap-1 border-b border-white/14 py-3 text-base transition hover:text-(--red-light) sm:flex-row sm:items-center sm:justify-between sm:gap-4 sm:py-4"
                 >
                   <span className="text-white/70">{label}</span>
                   <span className="font-semibold">{phone}</span>

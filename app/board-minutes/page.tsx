@@ -46,7 +46,7 @@ export default function BoardMinutesPage() {
                         href={documentHref(document.filename)}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex w-fit items-center border border-(--navy) px-4 py-2.5 text-sm font-semibold text-(--navy) transition hover:bg-(--navy) hover:text-white"
+                        className="inline-flex min-h-11 w-fit items-center border border-(--navy) px-4 py-2.5 text-sm font-semibold text-(--navy) transition hover:bg-(--navy) hover:text-white"
                       >
                         Open PDF
                       </a>

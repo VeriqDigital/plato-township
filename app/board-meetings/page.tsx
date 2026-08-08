@@ -38,8 +38,8 @@ export default function BoardMeetingsPage() {
             </div>
             <div className="p-5">
               <p className="text-sm font-semibold text-(--ink-muted)">Address</p>
-              <a className="mt-2 block text-lg font-semibold text-(--navy) underline decoration-(--red)/40 underline-offset-4 hover:text-(--red)" href={siteConfig.contact.mapUrl} target="_blank" rel="noreferrer">
-                10N924 Rippburger Rd<br />Elgin, IL 60124
+              <a className="mt-2 inline-flex min-h-11 items-center py-1 text-lg font-semibold text-(--navy) underline decoration-(--red)/40 underline-offset-4 hover:text-(--red)" href={siteConfig.contact.mapUrl} target="_blank" rel="noreferrer">
+                <span>10N924 Rippburger Rd<br />Elgin, IL 60124</span>
               </a>
             </div>
           </div>

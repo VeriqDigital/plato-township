@@ -34,7 +34,7 @@ const MeetingsSection = () => {
             </p>
             <Link
               href="/board-meetings"
-              className="mt-8 inline-flex items-center border border-white/30 px-5 py-3 text-sm font-semibold transition hover:bg-white hover:text-(--navy)"
+              className="mt-8 inline-flex min-h-11 items-center border border-white/30 px-5 py-3 text-sm font-semibold transition hover:bg-white hover:text-(--navy)"
             >
               View all meetings
             </Link>
@@ -44,7 +44,7 @@ const MeetingsSection = () => {
             {meetings.map((meeting) => (
               <article
                 key={`${meeting.month}-${meeting.day}`}
-                className="grid grid-cols-[4.5rem_1fr] gap-6 border-b border-white/16 py-6 sm:grid-cols-[6rem_1fr_auto] sm:items-center"
+                className="grid grid-cols-[3.75rem_minmax(0,1fr)] gap-4 border-b border-white/16 py-6 min-[375px]:grid-cols-[4.5rem_minmax(0,1fr)] min-[375px]:gap-6 sm:grid-cols-[6rem_minmax(0,1fr)_auto] sm:items-center"
               >
                 <div className="border-r border-white/18 pr-5 text-center">
                   <p className="font-heading text-4xl leading-none">{meeting.day}</p>
@@ -52,7 +52,7 @@ const MeetingsSection = () => {
                     {meeting.month}
                   </p>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <p className="mb-1 text-xs font-medium text-white/45">
                     {meeting.date}
                   </p>
@@ -61,7 +61,7 @@ const MeetingsSection = () => {
                 </div>
                 <Link
                   href="/board-meetings"
-                  className="col-start-2 text-sm font-semibold text-white/70 underline decoration-white/25 underline-offset-4 hover:text-white sm:col-start-auto"
+                  className="col-start-2 inline-flex min-h-11 w-fit items-center py-2 text-sm font-semibold text-white/70 underline decoration-white/25 underline-offset-4 hover:text-white sm:col-start-auto"
                 >
                   Details
                 </Link>

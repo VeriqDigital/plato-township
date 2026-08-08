@@ -18,7 +18,7 @@ const Hero = () => {
       <div className="absolute inset-x-0 bottom-0 -z-10 h-48 bg-linear-to-t from-(--navy)/70 to-transparent" />
 
       <Container>
-        <div className="flex min-h-[calc(100svh-5rem)] max-w-3xl flex-col justify-center pb-32 pt-24 text-white sm:pb-40">
+        <div className="flex min-h-[calc(100svh-5rem)] max-w-3xl flex-col justify-center pb-20 pt-20 text-white sm:pb-40 sm:pt-24">
           <p className="mb-6 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em] text-white/68">
             <span className="h-px w-10 bg-(--red)" />
             Plato Township
@@ -38,13 +38,13 @@ const Hero = () => {
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
               href="#postings"
-              className="inline-flex items-center gap-8 bg-(--red) px-6 py-4 text-xs font-bold uppercase tracking-[0.15em] transition hover:bg-(--red-dark)"
+              className="inline-flex min-h-12 w-full items-center justify-between gap-4 bg-(--red) px-6 py-4 text-xs font-bold uppercase tracking-[0.15em] transition hover:bg-(--red-dark) sm:w-auto sm:gap-8"
             >
               Latest updates <span aria-hidden="true">→</span>
             </Link>
             <Link
               href="#departments"
-              className="inline-flex items-center gap-8 border border-white/40 bg-white/5 px-6 py-4 text-xs font-bold uppercase tracking-[0.15em] backdrop-blur-sm transition hover:bg-white hover:text-(--navy)"
+              className="inline-flex min-h-12 w-full items-center justify-between gap-4 border border-white/40 bg-white/5 px-6 py-4 text-xs font-bold uppercase tracking-[0.15em] backdrop-blur-sm transition hover:bg-white hover:text-(--navy) sm:w-auto sm:gap-8"
             >
               Township departments <span aria-hidden="true">→</span>
             </Link>
@@ -52,7 +52,7 @@ const Hero = () => {
         </div>
       </Container>
 
-      <div className="absolute inset-x-0 bottom-0 border-t border-white/18 bg-(--navy)/80 text-white backdrop-blur-md">
+      <div className="relative border-t border-white/18 bg-(--navy)/80 text-white backdrop-blur-md sm:absolute sm:inset-x-0 sm:bottom-0">
         <Container>
           <div className="grid sm:grid-cols-3">
             {[
