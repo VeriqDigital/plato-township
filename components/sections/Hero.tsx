@@ -23,7 +23,7 @@ const Hero = () => {
             <span className="h-px w-10 bg-(--red)" />
             Plato Township
           </p>
-          <h1 className="font-heading text-6xl font-medium uppercase leading-[0.92] tracking-[-0.025em] sm:text-7xl lg:text-[6.9rem]">
+          <h1 className="font-heading text-6xl font-medium uppercase leading-[0.92] tracking-tight sm:text-7xl lg:text-[6.9rem]">
             Welcome to
             <span className="block text-white/72">Plato Township</span>
           </h1>

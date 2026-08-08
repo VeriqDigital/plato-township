@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "/banner.jpg",
         width: 1672,
         height: 941,
         alt: "A rural Kane County landscape at sunrise",
@@ -42,13 +42,18 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${siteConfig.name} | Kane County, Illinois`,
     description: siteConfig.description,
-    images: ["/opengraph-image.png"],
+    images: ["/banner.jpg"],
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${oswald.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${oswald.variable} antialiased`}
+    >
       <body className="flex min-h-screen flex-col">
         <Navbar />
         <div className="flex-1">{children}</div>
