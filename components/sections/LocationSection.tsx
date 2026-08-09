@@ -8,8 +8,6 @@ type LocationSectionProps = {
 const LocationSection = ({ locationOnly = false }: LocationSectionProps) => {
   const phoneDirectory = [
     ["Township Office", siteConfig.contact.officePhone],
-    ["Highway Commissioner", siteConfig.contact.highwayPhone],
-    ["Township Assessor", siteConfig.contact.assessorPhone],
   ];
 
   return (

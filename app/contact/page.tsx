@@ -11,17 +11,14 @@ export const metadata: Metadata = {
 const contactDirectory = [
   {
     office: "Township Supervisor",
-    phone: siteConfig.contact.officePhone,
     email: siteConfig.contact.supervisorOfficeEmail,
   },
   {
     office: "Highway Commissioner",
-    phone: siteConfig.contact.highwayPhone,
     email: siteConfig.contact.highwayEmail,
   },
   {
     office: "Township Assessor",
-    phone: siteConfig.contact.assessorPhone,
     email: siteConfig.contact.assessorEmail,
   },
 ] as const;
@@ -47,7 +44,19 @@ export default function ContactPage() {
               Contact Information
             </h2>
 
-            <div className="mt-7 border-t border-(--line)">
+            <div className="mt-7 border-y border-(--line) py-6">
+              <h3 className="text-xl font-semibold text-(--navy)">
+                Township Office
+              </h3>
+              <a
+                href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
+                className="mt-3 inline-flex min-h-11 items-center text-base text-(--ink-muted) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
+              >
+                {siteConfig.contact.officePhone}
+              </a>
+            </div>
+
+            <div>
               {contactDirectory.map((contact) => (
                 <section
                   key={contact.office}
@@ -62,12 +71,6 @@ export default function ContactPage() {
                   </h3>
                   <div className="mt-3 grid gap-2 text-base leading-7">
                     <a
-                      href={`tel:${contact.phone.replaceAll("-", "")}`}
-                      className="w-fit text-(--ink-muted) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
-                    >
-                      {contact.phone}
-                    </a>
-                    <a
                       href={`mailto:${contact.email}`}
                       className="w-fit break-all text-(--ink-muted) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
                     >
@@ -80,7 +83,7 @@ export default function ContactPage() {
 
             <div className="mt-7">
               <h3 className="text-lg font-semibold text-(--navy)">
-                Township Office
+                Township Office Address
               </h3>
               <a
                 href={siteConfig.contact.mapUrl}
