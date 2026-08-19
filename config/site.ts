@@ -7,7 +7,9 @@ export const siteConfig = {
   contact: {
     officePhone: "847-464-4228",
     highwayPhone: "847-464-5121",
+    highwayFax: "847-464-5122",
     assessorPhone: "847-464-4221",
+    assessorFax: "847-464-4297",
     supervisorAlternatePhone: "847-654-7787",
     supervisorOfficeEmail: "Supervisor@PlatoTwp.gov",
     supervisorEmail: "supervisor@platotownship.com",

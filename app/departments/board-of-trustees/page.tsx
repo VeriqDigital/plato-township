@@ -5,7 +5,7 @@ import {
   DepartmentSection,
 } from "@/components/departments/DepartmentPage";
 import { departmentMetadata } from "@/components/departments/departmentMetadata";
-import { departmentProfiles } from "@/data/departments";
+import { boardOfTrustees, departmentProfiles } from "@/data/departments";
 
 const department = departmentProfiles["board-of-trustees"];
 
@@ -20,20 +20,8 @@ export default function BoardOfTrusteesPage() {
       <DepartmentSection
         id="trustees-overview"
         title="Board Overview"
-        intro="This page connects residents with Plato Township board meeting information and published meeting records. Verified descriptions of board responsibilities will be added when official township content is supplied."
+        intro={boardOfTrustees.overview}
       />
-
-      <DepartmentSection
-        id="trustee-information"
-        title="Trustee Information"
-        intro="The project does not currently include a verified roster of trustees or term information."
-        className="mt-12"
-      >
-        <DepartmentAvailability title="Roster pending confirmed information">
-          Trustee names, titles, biographies, and terms will be published here
-          after they are confirmed by the township.
-        </DepartmentAvailability>
-      </DepartmentSection>
 
       <DepartmentSection
         id="board-meetings-records"
@@ -60,15 +48,13 @@ export default function BoardOfTrusteesPage() {
       </DepartmentSection>
 
       <DepartmentSection
-        id="board-governance"
-        title="Governance and Documents"
-        intro="Confirmed governance information and board documents beyond the current meeting archive will be added here when available."
+        id="trustee-information"
+        title="Trustee Information"
         className="mt-12"
       >
-        <DepartmentAvailability title="Additional information">
-          No verified board roster, term details, governance summary, or
-          additional board document collection is currently included in the
-          project.
+        <DepartmentAvailability title="Roster confirmation needed">
+          Trustee names and term information will be posted after the current
+          roster is confirmed by the township.
         </DepartmentAvailability>
       </DepartmentSection>
     </DepartmentPage>

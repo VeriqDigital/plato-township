@@ -1,12 +1,11 @@
 import {
-  DepartmentAvailability,
   DepartmentLinks,
-  DepartmentNeeds,
   DepartmentPage,
+  DepartmentPerson,
   DepartmentSection,
 } from "@/components/departments/DepartmentPage";
 import { departmentMetadata } from "@/components/departments/departmentMetadata";
-import { departmentProfiles } from "@/data/departments";
+import { clerkDepartment, departmentProfiles } from "@/data/departments";
 
 const department = departmentProfiles.clerk;
 
@@ -16,18 +15,39 @@ export default function TownshipClerkPage() {
   return (
     <DepartmentPage
       department={department}
-      contactNote="The project does not currently include a verified Clerk email address or office hours."
+      contactNote="Direct Clerk contact information and office hours have not been published. Contact the township office for assistance."
     >
       <DepartmentSection
-        id="clerk-overview"
-        title="Office Overview"
-        intro="The Clerk page provides a clear route to published township meeting records and a township contact point for record, notice, form, and election-related questions. Specific office procedures and responsibilities will be added only when confirmed township content is available."
-      />
+        id="township-clerk"
+        title="Township Clerk"
+        intro="The Township Clerk serves as Clerk for the Township Board and keeps the Township's official meeting records."
+      >
+        <DepartmentPerson name={clerkDepartment.clerk} title="Town Clerk" />
+      </DepartmentSection>
+
+      <DepartmentSection
+        id="clerk-responsibilities"
+        title="Office Responsibilities"
+        intro="The Clerk's published office responsibilities include the following."
+        className="mt-12"
+      >
+        <ul className="mt-6 border-t border-(--line)">
+          {clerkDepartment.responsibilities.slice(0, 4).map((responsibility) => (
+            <li
+              key={responsibility}
+              className="flex gap-4 border-b border-(--line) py-4 text-base leading-7 text-(--ink-muted) sm:px-5"
+            >
+              <span aria-hidden="true" className="mt-3 size-1.5 shrink-0 bg-(--red)" />
+              <span>{responsibility}</span>
+            </li>
+          ))}
+        </ul>
+      </DepartmentSection>
 
       <DepartmentSection
         id="clerk-records"
-        title="Township and Meeting Records"
-        intro="The website currently publishes the board meeting schedule and an archive of approved meeting-minute documents."
+        title="Township Records"
+        intro="The Clerk keeps records of Township proceedings and minutes of Town meetings and Township Board meetings. Residents can access the published meeting schedule and available minutes below."
         className="mt-12"
       >
         <DepartmentLinks
@@ -49,39 +69,16 @@ export default function TownshipClerkPage() {
       </DepartmentSection>
 
       <DepartmentSection
-        id="clerk-information"
-        title="Clerk Information"
-        intro="Use the township office contact for questions about the categories below. Published requirements, deadlines, and procedures have not been inferred."
+        id="elections-petitions"
+        title="Elections and Petitions"
+        intro="The Township Clerk serves as the local election authority and accepts petitions concerning local elections or referendums involving the township."
         className="mt-12"
       >
-        <DepartmentNeeds
-          items={[
-            {
-              title: "Township Records",
-              description:
-                "Questions about township records that are not already available in the meeting-minute archive.",
-            },
-            {
-              title: "Notices",
-              description:
-                "Questions about township notices and where current notices are published.",
-            },
-            {
-              title: "Election Information",
-              description:
-                "A starting point for identifying the appropriate source for township election-related information.",
-            },
-            {
-              title: "Forms and Documents",
-              description:
-                "Questions about the availability of Clerk-related forms or documents.",
-            },
-          ]}
-        />
-        <DepartmentAvailability title="Additional information">
-          Verified Clerk notices, election guidance, forms, and office-specific
-          contact details have not yet been supplied for publication.
-        </DepartmentAvailability>
+        <p className="mt-5 border-l-4 border-(--red) bg-(--mist) p-5 text-sm leading-7 text-(--ink-muted) sm:p-6">
+          Election deadlines, filing instructions, petition requirements, and
+          forms are not provided on this page. Contact the township office for
+          current information and the appropriate filing guidance.
+        </p>
       </DepartmentSection>
     </DepartmentPage>
   );

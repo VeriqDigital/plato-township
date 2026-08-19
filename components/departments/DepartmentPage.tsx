@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   departments,
@@ -80,17 +81,23 @@ function DepartmentContactPanel({
               {contact.label}
             </dt>
             <dd className="mt-1 min-w-0">
-              <a
-                href={contact.href}
-                target={contact.external ? "_blank" : undefined}
-                rel={contact.external ? "noreferrer" : undefined}
-                className="block min-h-7 break-words text-base leading-7 text-(--ink-muted) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
-              >
-                {contact.value}
-                {contact.external && (
-                  <span className="sr-only"> (opens in a new tab)</span>
-                )}
-              </a>
+              {contact.href ? (
+                <a
+                  href={contact.href}
+                  target={contact.external ? "_blank" : undefined}
+                  rel={contact.external ? "noreferrer" : undefined}
+                  className="block min-h-7 break-words text-base leading-7 text-(--ink-muted) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
+                >
+                  {contact.value}
+                  {contact.external && (
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  )}
+                </a>
+              ) : (
+                <span className="block break-words text-base leading-7 text-(--ink-muted)">
+                  {contact.value}
+                </span>
+              )}
             </dd>
           </div>
         ))}
@@ -99,6 +106,51 @@ function DepartmentContactPanel({
         <p className="mt-5 text-sm leading-6 text-(--ink-muted)">{note}</p>
       )}
     </aside>
+  );
+}
+
+export function DepartmentPerson({
+  name,
+  title,
+  image,
+  children,
+}: {
+  name: string;
+  title: string;
+  image?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  children?: ReactNode;
+}) {
+  return (
+    <article className="mt-6 grid gap-6 border border-(--line) bg-(--mist) p-6 sm:grid-cols-[auto_1fr] sm:items-center sm:p-7">
+      {image && (
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          className="h-auto w-32 max-w-full justify-self-start object-contain sm:w-36"
+          sizes="(max-width: 640px) 128px, 144px"
+        />
+      )}
+      <div className="min-w-0">
+        <p className="text-xs font-bold uppercase tracking-[0.16em] text-(--red-dark)">
+          {title}
+        </p>
+        <h3 className="mt-2 text-2xl font-semibold tracking-tight text-(--navy)">
+          {name}
+        </h3>
+        {children && (
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-(--ink-muted)">
+            {children}
+          </p>
+        )}
+      </div>
+    </article>
   );
 }
 
