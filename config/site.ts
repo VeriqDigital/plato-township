@@ -47,6 +47,7 @@ export const navigation: NavigationItem[] = [
       { label: "Board Minutes", href: "/board-minutes" },
     ],
   },
+  { label: "Announcements", href: "/announcements" },
   {
     label: "Township Departments",
     href: "/departments",
