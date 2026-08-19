@@ -14,7 +14,7 @@ export default function CemeteryDistrictPage() {
   return (
     <DepartmentPage
       department={department}
-      contactNote="Direct Cemetery District contact details should be confirmed with the township. Use the township office contact for cemetery inquiries."
+      contactNote="Contact the Cemetery District before relying on pricing or meeting information. The township office can also assist with cemetery inquiries."
     >
       <DepartmentSection
         id="cemetery-overview"
@@ -84,7 +84,7 @@ export default function CemeteryDistrictPage() {
       <DepartmentSection
         id="grave-pricing"
         title="Grave Pricing"
-        intro="The previous Plato Township website published the following grave-lot prices."
+        intro="The Cemetery District publishes the following grave-lot prices."
         className="mt-12"
       >
         <dl className="mt-6 grid border border-(--line) sm:grid-cols-2">
@@ -103,9 +103,8 @@ export default function CemeteryDistrictPage() {
           ))}
         </dl>
         <p className="mt-4 text-sm leading-6 text-(--ink-muted)">
-          Pricing shown reflects information published on the previous Plato
-          Township website and should be confirmed with the Cemetery District
-          before purchase.
+          Confirm current pricing and availability with the Cemetery District
+          before purchasing a grave lot.
         </p>
       </DepartmentSection>
 

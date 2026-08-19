@@ -70,7 +70,13 @@ export default function HighwayDepartmentPage() {
               <br />
               {highwayDepartment.county.address}
               <br />
-              Phone: {highwayDepartment.county.phone}
+              Phone:{" "}
+              <a
+                href={`tel:${highwayDepartment.county.phone.replaceAll("-", "")}`}
+                className="underline decoration-(--line) underline-offset-4 hover:text-(--red)"
+              >
+                {highwayDepartment.county.phone}
+              </a>
               <br />
               Fax: {highwayDepartment.county.fax}
               <br />
@@ -79,6 +85,16 @@ export default function HighwayDepartmentPage() {
                 className="break-all underline decoration-(--line) underline-offset-4 hover:text-(--red)"
               >
                 {highwayDepartment.county.email}
+              </a>
+              <br />
+              <a
+                href={highwayDepartment.county.website}
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-(--line) underline-offset-4 hover:text-(--red)"
+              >
+                Kane County DOT contact page (external)
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </p>
           </RoadList>
@@ -92,7 +108,23 @@ export default function HighwayDepartmentPage() {
               <br />
               {highwayDepartment.state.address}
               <br />
-              Phone: {highwayDepartment.state.phone}
+              Phone:{" "}
+              <a
+                href={`tel:${highwayDepartment.state.phone.replaceAll("-", "")}`}
+                className="underline decoration-(--line) underline-offset-4 hover:text-(--red)"
+              >
+                {highwayDepartment.state.phone}
+              </a>
+              <br />
+              <a
+                href={highwayDepartment.state.website}
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-(--line) underline-offset-4 hover:text-(--red)"
+              >
+                IDOT Region 1 contact page (external)
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
             </p>
           </RoadList>
         </div>
@@ -153,9 +185,9 @@ export default function HighwayDepartmentPage() {
         <DepartmentLinks
           links={[
             {
-              title: "Plato Township Road District website",
+              title: "Plato Township Road District",
               description:
-                "Open the existing Highway Department site for additional road and project information.",
+                "Visit the external Road District website for current road postings, permits, projects, and reports.",
               href: highwayDepartment.website,
               external: true,
             },

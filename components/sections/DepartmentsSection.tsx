@@ -2,6 +2,8 @@ import Link from "next/link";
 import { departments } from "@/data/departments";
 
 const DepartmentsSection = ({ showIntro = true }: { showIntro?: boolean }) => {
+  const DepartmentHeading = showIntro ? "h3" : "h2";
+
   return (
     <div>
       {showIntro && (
@@ -23,9 +25,9 @@ const DepartmentsSection = ({ showIntro = true }: { showIntro?: boolean }) => {
             href={department.href}
             className="grid gap-3 border-b border-(--line) py-5 transition hover:bg-(--mist) sm:grid-cols-[0.85fr_1.2fr_0.7fr_auto] sm:items-center sm:px-5"
           >
-            <h3 className="text-xl font-semibold text-(--navy)">
+            <DepartmentHeading className="text-xl font-semibold text-(--navy)">
               {department.title}
-            </h3>
+            </DepartmentHeading>
             <p className="text-base leading-7 text-(--ink-muted)">
               {department.description}
             </p>

@@ -45,7 +45,7 @@ export default function SupervisorPage() {
         <div className="mx-auto max-w-(--container-width) px-6">
           <Link
             href="/departments"
-            className="mb-6 inline-flex text-sm font-semibold text-white/62 transition hover:text-white"
+            className="mb-6 inline-flex min-h-11 items-center text-sm font-semibold text-white/62 transition hover:text-white"
           >
             Back to Township Departments
           </Link>
@@ -81,6 +81,8 @@ export default function SupervisorPage() {
                 rel="noreferrer"
               >
                 10N924 Rippburger Road, Elgin, IL 60124
+                <span aria-hidden="true" className="ml-1 text-(--red)">↗</span>
+                <span className="sr-only"> (opens in a new tab)</span>
               </a>
               <dl className="mt-4 space-y-4 text-base leading-7">
                 <div>

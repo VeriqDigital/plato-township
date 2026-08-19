@@ -92,7 +92,6 @@ export const departmentProfiles = {
       {
         label: "Fax",
         value: siteConfig.contact.highwayFax,
-        href: `tel:${siteConfig.contact.highwayFax.replaceAll("-", "")}`,
       },
       {
         label: "Email",
@@ -160,7 +159,6 @@ export const departmentProfiles = {
       {
         label: "Fax",
         value: siteConfig.contact.assessorFax,
-        href: `tel:${siteConfig.contact.assessorFax.replaceAll("-", "")}`,
       },
       {
         label: "Email",
@@ -187,14 +185,28 @@ export const departmentProfiles = {
       "Locations, services, pricing, and meeting information for the Plato Township Cemetery District.",
     href: "/departments/cemetery",
     contactSummary: {
-      label: "Township office",
-      value: siteConfig.contact.officePhone,
-      href: phoneHref(siteConfig.contact.officePhone),
+      label: "Cemetery contact",
+      value: siteConfig.contact.cemeteryPhone,
+      href: phoneHref(siteConfig.contact.cemeteryPhone),
     },
-    contactHeading: "Township Office",
+    contactHeading: "Cemetery District",
     contacts: [
       {
+        label: "Board president",
+        value: "Betty Rylko",
+      },
+      {
         label: "Phone",
+        value: siteConfig.contact.cemeteryPhone,
+        href: phoneHref(siteConfig.contact.cemeteryPhone),
+      },
+      {
+        label: "Email",
+        value: siteConfig.contact.cemeteryEmail,
+        href: `mailto:${siteConfig.contact.cemeteryEmail}`,
+      },
+      {
+        label: "Township office",
         value: siteConfig.contact.officePhone,
         href: phoneHref(siteConfig.contact.officePhone),
       },
@@ -240,7 +252,7 @@ export const departmentProfiles = {
 export const highwayDepartment = {
   commissioner: "Larry Trainor",
   office: "Plato Township Highway District",
-  website: "https://www.platotownship.com/content/highway/",
+  website: "https://www.platotownship.com/",
   roadDistrictRoads: [
     "Bahr Road",
     "Brier Hill Road",
@@ -291,13 +303,15 @@ export const highwayDepartment = {
     address: "41W011 Burlington Road, St. Charles, IL 60175",
     phone: "630-584-1170",
     fax: "630-584-5265",
-    email: "kdotcomments@co.kane.il.us",
+    email: "kdotcomments@KaneCountyIL.gov",
+    website: "https://kdot.kanecountyil.gov/Pages/Contact-Us.aspx",
   },
   state: {
     roads: ["U.S. Route 20", "Route 47"],
     office: "Illinois Department of Transportation, District 1",
     address: "201 West Center Court, Schaumburg, IL 60196-1096",
     phone: "847-705-4401",
+    website: "https://idot.illinois.gov/about-idot/idot-regions/idot-region-1.html",
   },
   snowRemoval: [
     "The Road District's published snow-removal information describes almost 39 miles of roadway, including more than 20 subdivisions, divided among four routes.",
@@ -351,7 +365,9 @@ export const assessorDepartment = {
   officeName: "Plato Township Assessor's Office",
   hours: "Monday–Thursday, 9:00 AM–2:00 PM",
   appointmentNote: "By appointment only",
-  propertySearchUrl: "https://www.platotwp.gov/property-search",
+  propertySearchPath: "/departments/assessor/property-search",
+  externalPropertySearchUrl:
+    "http://platotownshipassessor.com/SearchOptions",
   deputyPortrait: {
     src: "/assessor/stephanie-hulke.png",
     alt: "Stephanie Hulke, Plato Township Deputy Assessor",
@@ -361,7 +377,7 @@ export const assessorDepartment = {
 } as const;
 
 export const cemeteryDistrict = {
-  president: "Beth Rylko",
+  president: "Betty Rylko",
   cemeteries: [
     {
       name: "Plato Center Cemetery",
@@ -396,6 +412,14 @@ export const cemeteryDistrict = {
     location: "Plato Township Hall",
   },
 } as const;
+
+export const propertySearchDisclaimer = [
+  "The data contained here is a public record, is made available under the Freedom of Information Act, and is maintained by the Plato Township Assessor as a public service.",
+  "The information contained on this site was compiled from data available at the Plato Township Assessor's Office solely for the governmental purpose of property assessment. This information should not be relied upon by anyone as the final determination of ownership of property, market value, or for any other purpose.",
+  "Although information is updated periodically, the information contained herein may not accurately reflect the most current data available. Also, the assessed values and other information may not be certified and may be subject to change before being finalized for ad valorem tax purposes, without notice. The Assessor attempts to ensure the accuracy of the information contained herein, but the user is cautioned that the official records of the Assessor's Office shall prevail in the event of any errors and/or omissions contained herein.",
+  "No warranties, either expressed or implied, whatsoever are provided for the accuracy of data contained herein, its use, or its interpretation. Although information is updated periodically, the information contained herein may not accurately reflect the most current data available.",
+  "THE PLATO TOWNSHIP ASSESSOR HEREBY DISCLAIMS ANY AND ALL WARRANTIES, EITHER EXPRESSED OR IMPLIED, REGARDING THE ACCURACY OF DATA CONTAINED HEREIN, ITS USE, OR ITS INTERPRETATION; AND THE ASSESSOR ASSUMES NO RESPONSIBILITY OR LIABILITY FOR ANY UNAUTHORIZED DISSEMINATION OF THE INFORMATION AND/OR FOR ANY DAMAGES ARISING FROM THE USE OF THE PROPERTY DATA CONTAINED HEREIN.",
+] as const;
 
 export const boardOfTrustees = {
   overview:

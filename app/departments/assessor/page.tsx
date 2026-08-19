@@ -51,11 +51,16 @@ export default function AssessorPage() {
                     href={contact.href}
                     target={contact.external ? "_blank" : undefined}
                     rel={contact.external ? "noreferrer" : undefined}
-                    className="underline decoration-(--line) underline-offset-4 hover:text-(--red)"
+                    className="inline-flex min-h-11 items-center underline decoration-(--line) underline-offset-4 hover:text-(--red)"
                   >
                     {contact.value}
                     {contact.external && (
-                      <span className="sr-only"> (opens in a new tab)</span>
+                      <>
+                        <span aria-hidden="true" className="ml-1 text-(--red)">
+                          ↗
+                        </span>
+                        <span className="sr-only"> (opens in a new tab)</span>
+                      </>
                     )}
                   </a>
                 ) : (
@@ -92,8 +97,7 @@ export default function AssessorPage() {
               title: "Open Online Property Search",
               description:
                 "Review the township disclaimer before continuing to the property database.",
-              href: assessorDepartment.propertySearchUrl,
-              external: true,
+              href: assessorDepartment.propertySearchPath,
             },
           ]}
         />

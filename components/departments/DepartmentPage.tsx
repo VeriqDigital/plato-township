@@ -37,7 +37,7 @@ export function DepartmentPage({
 
 function DepartmentHero({ department }: { department: DepartmentProfile }) {
   return (
-    <header className="bg-(--navy) py-14 text-white sm:py-20">
+    <header className="bg-(--navy) py-16 text-white sm:py-20">
       <div className="mx-auto max-w-(--container-width) px-6">
         <Link
           href="/departments"
@@ -86,11 +86,16 @@ function DepartmentContactPanel({
                   href={contact.href}
                   target={contact.external ? "_blank" : undefined}
                   rel={contact.external ? "noreferrer" : undefined}
-                  className="block min-h-7 break-words text-base leading-7 text-(--ink-muted) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
+                  className="flex min-h-11 items-center break-words text-base leading-7 text-(--ink-muted) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
                 >
                   {contact.value}
                   {contact.external && (
-                    <span className="sr-only"> (opens in a new tab)</span>
+                    <>
+                      <span aria-hidden="true" className="ml-1 text-(--red)">
+                        ↗
+                      </span>
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </>
                   )}
                 </a>
               ) : (
@@ -227,8 +232,13 @@ export function DepartmentLinks({
         const content = (
           <>
             <span className="min-w-0">
-              <span className="block text-lg font-semibold text-(--navy)">
-                {link.title}
+              <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-lg font-semibold text-(--navy)">
+                <span>{link.title}</span>
+                {link.external && (
+                  <span className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-(--red-dark)">
+                    External site
+                  </span>
+                )}
               </span>
               <span className="mt-1 block text-sm leading-6 text-(--ink-muted)">
                 {link.description}

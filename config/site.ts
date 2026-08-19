@@ -15,6 +15,8 @@ export const siteConfig = {
     supervisorEmail: "supervisor@platotownship.com",
     highwayEmail: "PlatoHighway@Comcast.net",
     assessorEmail: "Assessor@PlatoTownship.com",
+    cemeteryPhone: "630-669-5295",
+    cemeteryEmail: "Betty.Rylko@gmail.com",
     streetAddress: "10N924 Rippburger Road",
     address: "10N924 Rippburger Road, Elgin, IL 60124",
     mapUrl:
@@ -55,7 +57,7 @@ export const navigation: NavigationItem[] = [
       { label: "Assessor", href: "/departments/assessor" },
       {
         label: "Property Search",
-        href: "/departments/assessor#property-search",
+        href: "/departments/assessor/property-search",
       },
       { label: "Cemetery District", href: "/departments/cemetery" },
       {

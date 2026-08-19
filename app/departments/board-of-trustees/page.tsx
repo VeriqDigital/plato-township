@@ -34,7 +34,7 @@ export default function BoardOfTrusteesPage() {
             {
               title: "Board Meetings",
               description:
-                "View the published 2026 meeting schedule, meeting time, and location.",
+                "View the published meeting schedule, meeting time, and location.",
               href: "/board-meetings",
             },
             {
