@@ -30,10 +30,7 @@ type NavigationLink = {
 type NavigationGroup = {
   label: string;
   href?: string;
-  items: Array<{
-    label: string;
-    href?: string;
-  }>;
+  items: NavigationLink[];
 };
 
 type NavigationItem = NavigationLink | NavigationGroup;
@@ -51,12 +48,18 @@ export const navigation: NavigationItem[] = [
     href: "/departments",
     items: [
       { label: "Supervisor", href: "/departments/supervisor" },
-      { label: "Highway Department" },
-      { label: "Township Clerk" },
-      { label: "Assessor" },
-      { label: "Property Search" },
-      { label: "Cemetery District" },
-      { label: "Board of Trustees" },
+      { label: "Highway Department", href: "/departments/highway" },
+      { label: "Township Clerk", href: "/departments/clerk" },
+      { label: "Assessor", href: "/departments/assessor" },
+      {
+        label: "Property Search",
+        href: "/departments/assessor#property-search",
+      },
+      { label: "Cemetery District", href: "/departments/cemetery" },
+      {
+        label: "Board of Trustees",
+        href: "/departments/board-of-trustees",
+      },
     ],
   },
   {

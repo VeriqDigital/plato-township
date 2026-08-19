@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { departmentMetadata } from "@/components/departments/departmentMetadata";
 import { siteConfig } from "@/config/site";
+import { departmentProfiles } from "@/data/departments";
 
-export const metadata: Metadata = {
-  title: "Township Supervisor",
-  description: "Contact information and responsibilities for the Plato Township Supervisor.",
-};
+export const metadata: Metadata = departmentMetadata(
+  departmentProfiles.supervisor,
+);
 
 const responsibilities = [
   "Community communications and public Q&A",
