@@ -32,8 +32,9 @@ export type Announcement = {
   demo?: boolean;
 };
 
-// Demo announcements are intentionally non-operational. Replace these records
-// with confirmed township notices while preserving the same typed structure.
+// Minimum required fields: slug, title, summary, body, category, and publishedAt.
+// expiresAt is the final America/Chicago calendar date the notice stays current.
+// Demo announcements are non-operational and should be replaced before launch.
 export const announcements: readonly Announcement[] = [
   {
     slug: "seasonal-road-maintenance-update",
@@ -111,8 +112,25 @@ export const announcements: readonly Announcement[] = [
 const toTimestamp = (date: string) =>
   new Date(`${date}T12:00:00.000Z`).getTime();
 
-const expirationTimestamp = (date: string) =>
-  new Date(`${date}T23:59:59.999Z`).getTime();
+export const ANNOUNCEMENT_TIME_ZONE = "America/Chicago";
+
+const platoTownshipDateFormatter = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+  timeZone: ANNOUNCEMENT_TIME_ZONE,
+});
+
+export const getPlatoTownshipCalendarDate = (date = new Date()) => {
+  const parts = Object.fromEntries(
+    platoTownshipDateFormatter
+      .formatToParts(date)
+      .filter(({ type }) => type === "year" || type === "month" || type === "day")
+      .map(({ type, value }) => [type, value]),
+  );
+
+  return `${parts.year}-${parts.month}-${parts.day}`;
+};
 
 export const formatAnnouncementDate = (date: string) =>
   new Intl.DateTimeFormat("en-US", {
@@ -128,43 +146,56 @@ export const isAnnouncementExpired = (
 ) =>
   Boolean(
     announcement.expiresAt &&
-      referenceDate.getTime() > expirationTimestamp(announcement.expiresAt),
+      getPlatoTownshipCalendarDate(referenceDate) > announcement.expiresAt,
   );
 
-const byPublicationDate = (a: Announcement, b: Announcement) =>
-  toTimestamp(b.publishedAt) - toTimestamp(a.publishedAt);
+const byStableIdentity = (a: Announcement, b: Announcement) => {
+  if (a.slug !== b.slug) return a.slug < b.slug ? -1 : 1;
+  if (a.title !== b.title) return a.title < b.title ? -1 : 1;
+  return 0;
+};
 
-const byHomepagePriority = (a: Announcement, b: Announcement) => {
+export const compareAnnouncementsByPublicationDate = (
+  a: Announcement,
+  b: Announcement,
+) =>
+  toTimestamp(b.publishedAt) - toTimestamp(a.publishedAt) ||
+  byStableIdentity(a, b);
+
+export const compareAnnouncementsByPriority = (
+  a: Announcement,
+  b: Announcement,
+) => {
   const urgentDifference = Number(Boolean(b.urgent)) - Number(Boolean(a.urgent));
   if (urgentDifference) return urgentDifference;
 
   const featuredDifference =
     Number(Boolean(b.featured)) - Number(Boolean(a.featured));
-  return featuredDifference || byPublicationDate(a, b);
+  return featuredDifference || compareAnnouncementsByPublicationDate(a, b);
 };
 
 export const getActiveAnnouncements = (referenceDate = new Date()) =>
   announcements
     .filter((announcement) => !isAnnouncementExpired(announcement, referenceDate))
-    .toSorted(byPublicationDate);
+    .toSorted(compareAnnouncementsByPublicationDate);
 
 export const getArchivedAnnouncements = (referenceDate = new Date()) =>
   announcements
     .filter((announcement) => isAnnouncementExpired(announcement, referenceDate))
-    .toSorted(byPublicationDate);
+    .toSorted(compareAnnouncementsByPublicationDate);
 
 export const getHomepageAnnouncements = (
   limit = 3,
   referenceDate = new Date(),
 ) =>
   getActiveAnnouncements(referenceDate)
-    .toSorted(byHomepagePriority)
+    .toSorted(compareAnnouncementsByPriority)
     .slice(0, limit);
 
 export const getPriorityAnnouncement = (referenceDate = new Date()) =>
   getActiveAnnouncements(referenceDate)
     .filter((announcement) => announcement.urgent || announcement.featured)
-    .toSorted(byHomepagePriority)[0];
+    .toSorted(compareAnnouncementsByPriority)[0];
 
 export const getAnnouncementBySlug = (slug: string) =>
   announcements.find((announcement) => announcement.slug === slug);

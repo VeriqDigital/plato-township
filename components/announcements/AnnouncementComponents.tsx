@@ -19,16 +19,15 @@ export function AnnouncementMeta({
       <time dateTime={announcement.publishedAt}>
         {formatAnnouncementDate(announcement.publishedAt)}
       </time>
-      {announcement.urgent && (
+      {announcement.urgent ? (
         <span className="border-l-2 border-(--red) pl-2 text-(--red-dark)">
           Urgent
         </span>
-      )}
-      {announcement.featured && (
+      ) : announcement.featured ? (
         <span className="border-l-2 border-(--navy) pl-2 text-(--navy)">
           Featured
         </span>
-      )}
+      ) : null}
       {archived && (
         <span className="border-l-2 border-(--line) pl-2">Archived</span>
       )}
