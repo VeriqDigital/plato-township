@@ -7,12 +7,16 @@ export const siteConfig = {
   contact: {
     officePhone: "847-464-4228",
     highwayPhone: "847-464-5121",
+    highwayFax: "847-464-5122",
     assessorPhone: "847-464-4221",
+    assessorFax: "847-464-4297",
     supervisorAlternatePhone: "847-654-7787",
     supervisorOfficeEmail: "Supervisor@PlatoTwp.gov",
     supervisorEmail: "supervisor@platotownship.com",
     highwayEmail: "PlatoHighway@Comcast.net",
     assessorEmail: "Assessor@PlatoTownship.com",
+    cemeteryPhone: "630-669-5295",
+    cemeteryEmail: "Betty.Rylko@gmail.com",
     streetAddress: "10N924 Rippburger Road",
     address: "10N924 Rippburger Road, Elgin, IL 60124",
     mapUrl:
@@ -30,10 +34,7 @@ type NavigationLink = {
 type NavigationGroup = {
   label: string;
   href?: string;
-  items: Array<{
-    label: string;
-    href?: string;
-  }>;
+  items: NavigationLink[];
 };
 
 type NavigationItem = NavigationLink | NavigationGroup;
@@ -46,27 +47,38 @@ export const navigation: NavigationItem[] = [
       { label: "Board Minutes", href: "/board-minutes" },
     ],
   },
+  { label: "Announcements", href: "/announcements" },
   {
     label: "Township Departments",
     href: "/departments",
     items: [
       { label: "Supervisor", href: "/departments/supervisor" },
-      { label: "Highway Department" },
-      { label: "Township Clerk" },
-      { label: "Assessor" },
-      { label: "Property Search" },
-      { label: "Cemetery District" },
-      { label: "Board of Trustees" },
+      { label: "Highway Department", href: "/departments/highway" },
+      { label: "Township Clerk", href: "/departments/clerk" },
+      { label: "Assessor", href: "/departments/assessor" },
+      {
+        label: "Property Search",
+        href: "/departments/assessor/property-search",
+      },
+      { label: "Cemetery District", href: "/departments/cemetery" },
+      {
+        label: "Board of Trustees",
+        href: "/departments/board-of-trustees",
+      },
     ],
   },
   {
     label: "Community Links",
+    href: "/community-resources",
     items: [
-      { label: "Fire Departments", href: "/#community" },
-      { label: "Local Weather", href: "/#community" },
-      { label: "Local News", href: "/#community" },
-      { label: "Trash", href: "/#community" },
-      { label: "Plato Park", href: "/#community" },
+      {
+        label: "Fire Departments",
+        href: "/community-resources#fire-departments",
+      },
+      { label: "Local Weather", href: "/community-resources#weather" },
+      { label: "Local News", href: "/community-resources#local-news" },
+      { label: "Trash", href: "/community-resources#trash" },
+      { label: "Plato Park", href: "/community-resources#plato-park" },
     ],
   },
   { label: "About Us", href: "/about" },
@@ -84,6 +96,6 @@ export const footerLinks = [
   { label: "Township Postings", href: "/#postings" },
   { label: "Meetings", href: "/#meetings" },
   { label: "Departments", href: "/departments" },
-  { label: "Community Links", href: "/#community" },
+  { label: "Community Links", href: "/community-resources" },
   { label: "Contact", href: "/contact" },
 ] as const;

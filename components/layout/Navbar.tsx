@@ -56,7 +56,7 @@ const Navbar = () => {
       }
     };
 
-    const desktopViewport = window.matchMedia("(min-width: 1280px)");
+    const desktopViewport = window.matchMedia("(min-width: 1320px)");
     const handleViewportChange = (event: MediaQueryListEvent) => {
       if (event.matches) {
         suppressedHoverDropdown.current = null;
@@ -105,7 +105,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <div className="ml-auto hidden h-full items-stretch xl:flex">
+        <div className="ml-auto hidden h-full items-stretch min-[1320px]:flex">
           {navigation.map((item, index) => {
             if (!("items" in item)) {
               return (
@@ -230,14 +230,14 @@ const Navbar = () => {
 
         <Link
           href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
-          className="ml-auto hidden border border-white/25 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-(--red) hover:bg-(--red) lg:inline-flex xl:ml-4"
+          className="ml-auto hidden border border-white/25 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-(--red) hover:bg-(--red) lg:inline-flex min-[1320px]:ml-4"
         >
           {siteConfig.contact.officePhone}
         </Link>
 
         <button
           type="button"
-          className="ml-auto grid size-11 place-items-center border border-white/25 text-white transition hover:border-white lg:ml-4 xl:hidden"
+          className="ml-auto grid size-11 place-items-center border border-white/25 text-white transition hover:border-white lg:ml-4 min-[1320px]:hidden"
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           aria-expanded={isMenuOpen}
           aria-controls="mobile-primary-navigation"
@@ -254,7 +254,7 @@ const Navbar = () => {
       {isMenuOpen && (
         <div
           id="mobile-primary-navigation"
-          className="max-h-[calc(100svh-5rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-(--navy) px-5 pb-7 text-white xl:hidden"
+          className="max-h-[calc(100svh-5rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-(--navy) px-5 pb-7 text-white min-[1320px]:hidden"
         >
           <div className="mx-auto max-w-(--container-width)">
             {navigation.map((item, index) => {
