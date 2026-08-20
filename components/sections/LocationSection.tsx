@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 type LocationSectionProps = {
@@ -43,13 +42,18 @@ const LocationSection = ({ locationOnly = false }: LocationSectionProps) => {
             {locationOnly ? "Plato Township Hall / Township Office" : "Township office"}
           </p>
           <p className="mt-2 max-w-xs text-base leading-7">{siteConfig.contact.address}</p>
-          <Link
+          <a
             href={siteConfig.contact.mapUrl}
             target="_blank"
+            rel="noopener noreferrer"
             className="mt-5 inline-flex items-center border border-white/30 px-5 py-3 text-sm font-semibold transition hover:bg-white hover:text-(--navy)"
           >
             Get directions
-          </Link>
+            <span aria-hidden="true" className="ml-2">
+              ↗
+            </span>
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
         </div>
       </div>
 
