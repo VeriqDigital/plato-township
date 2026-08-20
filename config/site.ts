@@ -69,12 +69,16 @@ export const navigation: NavigationItem[] = [
   },
   {
     label: "Community Links",
+    href: "/community-resources",
     items: [
-      { label: "Fire Departments", href: "/#community" },
-      { label: "Local Weather", href: "/#community" },
-      { label: "Local News", href: "/#community" },
-      { label: "Trash", href: "/#community" },
-      { label: "Plato Park", href: "/#community" },
+      {
+        label: "Fire Departments",
+        href: "/community-resources#fire-departments",
+      },
+      { label: "Local Weather", href: "/community-resources#weather" },
+      { label: "Local News", href: "/community-resources#local-news" },
+      { label: "Trash", href: "/community-resources#trash" },
+      { label: "Plato Park", href: "/community-resources#plato-park" },
     ],
   },
   { label: "About Us", href: "/about" },
@@ -92,6 +96,6 @@ export const footerLinks = [
   { label: "Township Postings", href: "/#postings" },
   { label: "Meetings", href: "/#meetings" },
   { label: "Departments", href: "/departments" },
-  { label: "Community Links", href: "/#community" },
+  { label: "Community Links", href: "/community-resources" },
   { label: "Contact", href: "/contact" },
 ] as const;

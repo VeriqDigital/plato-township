@@ -1,31 +1,58 @@
-import { communityResources } from "@/data/community-resources";
+import Link from "next/link";
+import { communityResourceCategories } from "@/data/community-resources";
 
 const CommunityResourcesSection = () => {
   return (
-    <div className="grid gap-9 lg:grid-cols-[0.72fr_1.28fr]">
-      <div>
-        <h2 className="section-title">Community Resources</h2>
-        <p className="mt-5 max-w-md text-base leading-7 text-(--ink-muted)">
-          A clear starting point for common services beyond the township office.
-          External destinations can be connected during the next content phase.
-        </p>
+    <div>
+      <div className="grid gap-7 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
+        <div>
+          <h2 className="section-title">Community Resources</h2>
+        </div>
+        <div className="max-w-3xl">
+          <p className="text-base leading-7 text-(--ink-muted)">
+            Find trusted public safety, weather, news, waste-service, and
+            recreation information for Plato Township residents.
+          </p>
+          <Link
+            href="/community-resources"
+            className="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-(--navy) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
+          >
+            View Community Resources
+            <span aria-hidden="true" className="ml-2 text-(--red)">
+              →
+            </span>
+          </Link>
+        </div>
       </div>
 
-      <div className="grid sm:grid-cols-2">
-        {communityResources.map((item, index) => (
-          <article
-            key={item.question}
-            className={`border-(--line) p-6 ${
-              index % 2 ? "sm:border-l" : ""
-            } ${index > 1 ? "border-t" : ""} ${index === 1 ? "border-t sm:border-t-0" : ""}`}
+      <ol className="mt-9 grid border-y border-(--line) lg:grid-cols-5">
+        {communityResourceCategories.map((category, index) => (
+          <li
+            key={category.id}
+            className={`border-(--line) ${
+              index ? "border-t lg:border-l lg:border-t-0" : ""
+            }`}
           >
-            <h3 className="text-xl font-semibold text-(--navy)">
-              {item.question}
-            </h3>
-            <p className="mt-3 text-base leading-7 text-(--ink-muted)">{item.answer}</p>
-          </article>
+            <Link
+              href={`/community-resources#${category.id}`}
+              className="group flex h-full min-h-36 min-w-0 flex-col justify-between gap-5 p-5 transition hover:bg-white sm:p-6"
+            >
+              <h3 className="break-words text-lg font-semibold leading-snug text-(--navy)">
+                {category.title}
+              </h3>
+              <span className="flex items-center justify-between text-xs font-bold uppercase tracking-[0.12em] text-(--red-dark)">
+                View section
+                <span
+                  aria-hidden="true"
+                  className="text-base transition-transform group-hover:translate-x-1"
+                >
+                  →
+                </span>
+              </span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   );
 };
