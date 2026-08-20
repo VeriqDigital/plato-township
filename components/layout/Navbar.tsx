@@ -140,6 +140,16 @@ const Navbar = () => {
                   suppressedHoverDropdown.current = null;
                   setOpenDropdown(null);
                 }}
+                onBlur={(event) => {
+                  if (
+                    !event.currentTarget.contains(
+                      event.relatedTarget as Node | null,
+                    )
+                  ) {
+                    suppressedHoverDropdown.current = null;
+                    setOpenDropdown(null);
+                  }
+                }}
               >
                 {group.href ? (
                   <div
@@ -160,7 +170,6 @@ const Navbar = () => {
                       type="button"
                       onClick={() => toggleDropdown(index)}
                       aria-label={`Toggle ${group.label} menu`}
-                      aria-haspopup="menu"
                       aria-expanded={isOpen}
                       aria-controls={`desktop-submenu-${index}`}
                       className="flex h-full min-w-9 items-center justify-center pl-1"
@@ -172,7 +181,6 @@ const Navbar = () => {
                   <button
                     type="button"
                     onClick={() => toggleDropdown(index)}
-                    aria-haspopup="menu"
                     aria-expanded={isOpen}
                     aria-controls={`desktop-submenu-${index}`}
                     className={`flex items-center border-b-2 px-4 text-[13px] font-semibold transition-colors ${
@@ -189,14 +197,12 @@ const Navbar = () => {
                 {isOpen && (
                   <div
                     id={`desktop-submenu-${index}`}
-                    role="menu"
                     className="absolute right-0 top-full min-w-64 border-t-2 border-(--red) bg-white p-2 text-(--navy) shadow-[0_22px_50px_rgba(4,18,36,0.28)]"
                   >
                     {group.items.map((item) => item.href ? (
                       <Link
                         key={`${group.label}-${item.label}`}
                         href={item.href}
-                        role="menuitem"
                         onClick={closeNavigation}
                         className="group flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold transition hover:bg-(--mist)"
                       >
@@ -211,7 +217,6 @@ const Navbar = () => {
                     ) : (
                       <span
                         key={`${group.label}-${item.label}`}
-                        role="menuitem"
                         aria-disabled="true"
                         className="flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold text-(--ink-muted)"
                       >
@@ -230,6 +235,7 @@ const Navbar = () => {
 
         <Link
           href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
+          aria-label={`Call the Township Office at ${siteConfig.contact.officePhone}`}
           className="ml-auto hidden border border-white/25 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-(--red) hover:bg-(--red) lg:inline-flex min-[1320px]:ml-4"
         >
           {siteConfig.contact.officePhone}
@@ -334,6 +340,7 @@ const Navbar = () => {
             })}
             <Link
               href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
+              aria-label={`Call the Township Office at ${siteConfig.contact.officePhone}`}
               className="mt-6 flex min-h-14 w-full flex-col items-start justify-center gap-1 bg-white px-5 py-3 text-sm font-bold text-(--navy) min-[360px]:flex-row min-[360px]:items-center min-[360px]:justify-between"
             >
               Call the Township Office
