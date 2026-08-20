@@ -7,13 +7,13 @@ export type ElectionResource = {
   source: "Kane County Clerk" | "Illinois State Board of Elections";
 };
 
-export const votingResources: readonly ElectionResource[] = [
+export const registrationResources: readonly ElectionResource[] = [
   {
     id: "voter-registration",
     title: "Register to Vote",
     description:
       "Review Kane County registration options, eligibility information, and links to the Illinois online voter application.",
-    ctaLabel: "View registration information",
+    ctaLabel: "Register to Vote",
     href: "https://clerk.kanecountyil.gov/Elections/Pages/Voter-Registration.aspx",
     source: "Kane County Clerk",
   },
@@ -22,16 +22,19 @@ export const votingResources: readonly ElectionResource[] = [
     title: "Voter Search and Polling Place",
     description:
       "Use Kane County's voter lookup for current registration and polling-place information.",
-    ctaLabel: "Open voter search",
+    ctaLabel: "Check Voter Registration",
     href: "https://clerk.kanecountyil.gov/Elections/Pages/Voter-Search.aspx",
     source: "Kane County Clerk",
   },
+];
+
+export const votingMethodsResources: readonly ElectionResource[] = [
   {
     id: "vote-by-mail",
     title: "Vote by Mail",
     description:
       "Find current Kane County vote-by-mail applications, instructions, and ballot information.",
-    ctaLabel: "View vote-by-mail information",
+    ctaLabel: "Find Vote-by-Mail Information",
     href: "https://clerk.kanecountyil.gov/Elections/pages/vote-by-mail.aspx",
     source: "Kane County Clerk",
   },
@@ -40,16 +43,19 @@ export const votingResources: readonly ElectionResource[] = [
     title: "Early Voting",
     description:
       "Confirm current early-voting locations, dates, hours, and voter instructions with Kane County.",
-    ctaLabel: "View early-voting information",
+    ctaLabel: "View Early Voting Information",
     href: "https://clerk.kanecountyil.gov/Elections/pages/early-voting.aspx",
     source: "Kane County Clerk",
   },
+];
+
+export const electionInformationResources: readonly ElectionResource[] = [
   {
     id: "election-calendar",
     title: "Election Calendar",
     description:
       "Review the Kane County Clerk's current election calendar for officially published dates and filing periods.",
-    ctaLabel: "Open the election calendar",
+    ctaLabel: "View Election Calendar",
     href: "https://clerk.kanecountyil.gov/Elections/Documents/Election-Calendar.pdf",
     source: "Kane County Clerk",
   },
@@ -58,13 +64,10 @@ export const votingResources: readonly ElectionResource[] = [
     title: "Election Results",
     description:
       "Access current and archived election results published by the Kane County Clerk.",
-    ctaLabel: "View election results",
+    ctaLabel: "View Election Results",
     href: "https://clerk.kanecountyil.gov/Elections/Pages/Election-Results-Archive.aspx",
     source: "Kane County Clerk",
   },
-];
-
-export const kaneCountyElectionResources: readonly ElectionResource[] = [
   {
     id: "kane-county-elections",
     title: "Kane County Elections",
@@ -79,7 +82,7 @@ export const kaneCountyElectionResources: readonly ElectionResource[] = [
     title: "Candidate and Filing Information",
     description:
       "Use the County Clerk's official candidate resources for current guides, petitions, filings, and related election documents.",
-    ctaLabel: "View candidate information",
+    ctaLabel: "View Candidate Filing Information",
     href: "https://clerk.kanecountyil.gov/Elections/Pages/Elections.aspx",
     source: "Kane County Clerk",
   },
@@ -91,7 +94,7 @@ export const illinoisElectionResources: readonly ElectionResource[] = [
     title: "Illinois Voter Information",
     description:
       "State voter resources include registration, polling-place lookup, voting guidance, and election-authority information.",
-    ctaLabel: "View Illinois voter information",
+    ctaLabel: "Find Illinois Voter Information",
     href: "https://www.elections.il.gov/InformationForVoters.aspx?MID=I0cuvBFuZRw%3D",
     source: "Illinois State Board of Elections",
   },
@@ -100,7 +103,7 @@ export const illinoisElectionResources: readonly ElectionResource[] = [
     title: "Illinois State Board of Elections",
     description:
       "Official statewide election information, forms, results, candidate resources, and voter services.",
-    ctaLabel: "Visit Illinois elections",
+    ctaLabel: "Visit Illinois State Board of Elections",
     href: "https://www.elections.il.gov/",
     source: "Illinois State Board of Elections",
   },

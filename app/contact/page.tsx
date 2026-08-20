@@ -43,8 +43,9 @@ export default function ContactPage() {
             Contact Plato Township
           </h1>
           <p className="mt-6 max-w-3xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-            Find direct contact information for Township offices and
-            departments, or get directions to Township Hall.
+            Please contact the appropriate Township office directly by phone
+            or email. If you are unsure where to begin, call the Township
+            Office for assistance.
           </p>
           <p className="mt-6 border-l-2 border-(--red-light) pl-4 text-sm font-semibold leading-6 text-white/78">
             For emergencies, call 911.
@@ -88,12 +89,16 @@ export default function ContactPage() {
                     href={siteConfig.contact.mapUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 min-w-0 items-center break-words text-(--ink-muted) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
+                    aria-label="Get directions to Plato Township Hall"
+                    className="inline-flex min-h-11 min-w-0 items-center break-words font-semibold text-(--navy) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
                   >
-                    {siteConfig.contact.address}
+                    Get directions to Township Hall
                     <span className="sr-only"> (opens in a new tab)</span>
                   </a>
                 </div>
+                <p className="mt-2 text-sm leading-6 text-(--ink-muted)">
+                  {siteConfig.contact.address}
+                </p>
               </article>
 
               <ol>
@@ -127,6 +132,7 @@ export default function ContactPage() {
                           {emailContact?.href && (
                             <a
                               href={emailContact.href}
+                              aria-label={`Email ${department.title} at ${emailContact.value}`}
                               className="mt-1 min-w-0 break-all text-(--ink-muted) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
                             >
                               {emailContact.value}
@@ -137,7 +143,7 @@ export default function ContactPage() {
                           href={department.href}
                           className="inline-flex min-h-11 w-fit items-center font-semibold text-(--navy) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
                         >
-                          View department
+                          View {department.shortTitle}
                           <span aria-hidden="true" className="ml-2 text-(--red)">
                             →
                           </span>
@@ -148,14 +154,14 @@ export default function ContactPage() {
                 })}
               </ol>
 
-              <aside className="mt-8 border-l-4 border-(--red) bg-(--mist) p-6">
-                <h3 className="text-xl font-semibold text-(--navy)">
-                  Send a Message
+              <aside className="mt-8 border-t border-(--line) pt-6">
+                <h3 className="text-lg font-semibold text-(--navy)">
+                  Contact an Office Directly
                 </h3>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-(--ink-muted)">
-                  This website does not currently deliver online messages. Use
-                  the department email links above or call the Township Office
-                  so your question reaches the appropriate office.
+                  Online contact submissions are not currently accepted through
+                  this website. Please use the phone and email links above so
+                  your question reaches the appropriate office.
                 </p>
               </aside>
             </div>

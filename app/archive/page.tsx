@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 const description =
-  "Access previously published Plato Township meeting records, schedules, and announcements.";
+  "Access Plato Township meeting records, published schedules, and previously published announcements.";
 
 export const metadata: Metadata = {
   title: "Township Archive",
@@ -25,7 +25,7 @@ const archiveCategories = [
     id: "board-minutes",
     title: "Board Minutes",
     description:
-      "Browse published Plato Township meeting minutes organized by year and open the original PDF records.",
+      "Historical meeting records and approved minutes, organized by year.",
     href: "/board-minutes",
     ctaLabel: "Browse Board Minutes",
   },
@@ -33,15 +33,14 @@ const archiveCategories = [
     id: "board-meetings",
     title: "Board Meetings",
     description:
-      "Review the Township's published meeting schedule and available meeting details.",
+      "Current and published meeting schedule and location information.",
     href: "/board-meetings",
     ctaLabel: "View Board Meetings",
   },
   {
     id: "announcements",
     title: "Announcement Archive",
-    description:
-      "Find expired Township notices that remain available for historical reference.",
+    description: "Previously published and expired Township notices.",
     href: "/announcements#announcement-archive",
     ctaLabel: "Browse archived announcements",
   },
@@ -53,14 +52,14 @@ export default function ArchivePage() {
       <header className="bg-(--navy) py-16 text-white sm:py-20">
         <div className="mx-auto max-w-(--container-width) px-6">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-(--red-light)">
-            Historical township resources
+            Township records and notices
           </p>
           <h1 className="mt-3 max-w-4xl font-heading text-5xl font-medium uppercase leading-[0.96] sm:text-7xl">
             Township Archive
           </h1>
           <p className="mt-6 max-w-3xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-            Access previously published Township records, meeting information,
-            and notices through the site&apos;s existing public collections.
+            Find historical meeting records, current and published meeting
+            schedule information, and previously published notices.
           </p>
         </div>
       </header>
@@ -72,11 +71,11 @@ export default function ArchivePage() {
               id="archive-categories"
               className="text-3xl font-semibold tracking-tight text-(--navy) sm:text-4xl"
             >
-              Archive Categories
+              Records and Resources
             </h2>
             <p className="mt-5 max-w-md text-base leading-7 text-(--ink-muted)">
-              Choose a collection to view the records and notices already
-              published on this site.
+              Choose a destination for meeting information, approved minutes,
+              or expired announcements.
             </p>
           </div>
 
@@ -114,19 +113,6 @@ export default function ArchivePage() {
         </div>
       </section>
 
-      <section className="bg-(--mist) py-14 sm:py-16" aria-labelledby="future-records">
-        <div className="mx-auto max-w-(--container-width) px-6">
-          <div className="max-w-3xl border-l-4 border-(--red) bg-white p-6 sm:p-8">
-            <h2 id="future-records" className="text-2xl font-semibold text-(--navy)">
-              Future Records
-            </h2>
-            <p className="mt-3 text-base leading-7 text-(--ink-muted)">
-              Additional historical Township records may be added as they
-              become available.
-            </p>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }

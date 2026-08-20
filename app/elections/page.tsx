@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ElectionResource } from "@/data/elections";
 import {
+  electionInformationResources,
   illinoisElectionResources,
-  kaneCountyElectionResources,
-  votingResources,
+  registrationResources,
+  votingMethodsResources,
 } from "@/data/elections";
 
 const description =
@@ -66,6 +67,41 @@ function ElectionResourceList({
   );
 }
 
+const resourceGroups = [
+  {
+    id: "registration-and-verification",
+    title: "Register and Verify Voter Information",
+    description:
+      "Register to vote or use Kane County's official lookup to verify your registration and polling-place information.",
+    resources: registrationResources,
+    showCurrentInformationNote: true,
+  },
+  {
+    id: "voting-methods",
+    title: "Voting Methods and Polling Information",
+    description:
+      "Find official instructions for voting by mail and early voting through the Kane County Clerk.",
+    resources: votingMethodsResources,
+    showCurrentInformationNote: false,
+  },
+  {
+    id: "official-election-information",
+    title: "Election Results and Official Information",
+    description:
+      "Access results, the published election calendar, and Kane County election administration and filing resources.",
+    resources: electionInformationResources,
+    showCurrentInformationNote: false,
+  },
+  {
+    id: "illinois-statewide-resources",
+    title: "Illinois Statewide Election Resources",
+    description:
+      "Use the Illinois State Board of Elections for statewide voter services and official election information.",
+    resources: illinoisElectionResources,
+    showCurrentInformationNote: false,
+  },
+] as const;
+
 export default function ElectionsPage() {
   return (
     <main>
@@ -78,72 +114,42 @@ export default function ElectionsPage() {
             Elections
           </h1>
           <p className="mt-6 max-w-3xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">
-            Access official voter registration, polling-place, ballot, early
-            voting, vote-by-mail, and election-result information for Kane
-            County residents.
+            Find official voter registration, voting, and election information
+            from the Kane County Clerk and Illinois State Board of Elections.
+            Plato Township provides these links as a resident resource.
           </p>
         </div>
       </header>
 
-      <section className="bg-white py-14 sm:py-16" aria-labelledby="voting-resources">
-        <div className="mx-auto grid max-w-(--container-width) gap-8 px-6 lg:grid-cols-[0.38fr_1fr] lg:gap-14">
-          <div>
-            <h2
-              id="voting-resources"
-              className="text-3xl font-semibold tracking-tight text-(--navy) sm:text-4xl"
-            >
-              Voting Resources
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-7 text-(--ink-muted)">
-              Start with Kane County&apos;s official election services for local
-              registration and voting information.
-            </p>
-            <p className="mt-6 border-l-4 border-(--red) bg-(--warm-white) p-4 text-sm font-semibold leading-6 text-(--navy)">
-              Election dates, polling locations, and procedures may change.
-              Confirm current details with the official election authority
-              before acting.
-            </p>
+      {resourceGroups.map((group, index) => (
+        <section
+          key={group.id}
+          className={`${index % 2 === 0 ? "bg-white" : "bg-(--mist)"} py-14 sm:py-16`}
+          aria-labelledby={group.id}
+        >
+          <div className="mx-auto grid max-w-(--container-width) gap-8 px-6 lg:grid-cols-[0.38fr_1fr] lg:gap-14">
+            <div>
+              <h2
+                id={group.id}
+                className="text-3xl font-semibold tracking-tight text-(--navy) sm:text-4xl"
+              >
+                {group.title}
+              </h2>
+              <p className="mt-5 max-w-md text-base leading-7 text-(--ink-muted)">
+                {group.description}
+              </p>
+              {group.showCurrentInformationNote && (
+                <p className="mt-6 border-l-4 border-(--red) bg-(--warm-white) p-4 text-sm font-semibold leading-6 text-(--navy)">
+                  Election dates, polling locations, and procedures may change.
+                  Confirm current details with the official election authority
+                  before acting.
+                </p>
+              )}
+            </div>
+            <ElectionResourceList resources={group.resources} />
           </div>
-          <ElectionResourceList resources={votingResources} />
-        </div>
-      </section>
-
-      <section className="bg-(--mist) py-14 sm:py-16" aria-labelledby="kane-county-elections">
-        <div className="mx-auto grid max-w-(--container-width) gap-8 px-6 lg:grid-cols-[0.38fr_1fr] lg:gap-14">
-          <div>
-            <h2
-              id="kane-county-elections"
-              className="text-3xl font-semibold tracking-tight text-(--navy) sm:text-4xl"
-            >
-              Kane County Elections
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-7 text-(--ink-muted)">
-              For Plato Township residents, use the Kane County Clerk&apos;s
-              official resources for local voter services and election
-              administration information.
-            </p>
-          </div>
-          <ElectionResourceList resources={kaneCountyElectionResources} />
-        </div>
-      </section>
-
-      <section className="bg-white py-14 sm:py-16" aria-labelledby="illinois-election-resources">
-        <div className="mx-auto grid max-w-(--container-width) gap-8 px-6 lg:grid-cols-[0.38fr_1fr] lg:gap-14">
-          <div>
-            <h2
-              id="illinois-election-resources"
-              className="text-3xl font-semibold tracking-tight text-(--navy) sm:text-4xl"
-            >
-              Illinois Election Resources
-            </h2>
-            <p className="mt-5 max-w-md text-base leading-7 text-(--ink-muted)">
-              Use the Illinois State Board of Elections for statewide voter,
-              candidate, filing, and election information.
-            </p>
-          </div>
-          <ElectionResourceList resources={illinoisElectionResources} />
-        </div>
-      </section>
+        </section>
+      ))}
 
       <section className="bg-(--warm-white) py-14 sm:py-16" aria-labelledby="township-clerk">
         <div className="mx-auto max-w-(--container-width) px-6">

@@ -10,7 +10,13 @@ const LocationSection = ({ locationOnly = false }: LocationSectionProps) => {
   ];
 
   return (
-    <div className="grid overflow-hidden bg-white shadow-[0_24px_70px_rgba(14,35,62,0.12)] lg:grid-cols-[0.92fr_1.08fr]">
+    <div
+      className={`grid overflow-hidden bg-white lg:grid-cols-[0.92fr_1.08fr] ${
+        locationOnly
+          ? "border border-(--line)"
+          : "shadow-[0_24px_70px_rgba(14,35,62,0.12)]"
+      }`}
+    >
       <div className="bg-(--navy) p-8 text-white sm:p-10 lg:p-12">
         <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
           {locationOnly ? "Visit Us" : "Contact Information"}
@@ -46,9 +52,10 @@ const LocationSection = ({ locationOnly = false }: LocationSectionProps) => {
             href={siteConfig.contact.mapUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Get directions to Plato Township Hall"
             className="mt-5 inline-flex items-center border border-white/30 px-5 py-3 text-sm font-semibold transition hover:bg-white hover:text-(--navy)"
           >
-            Get directions
+            Get directions to Township Hall
             <span aria-hidden="true" className="ml-2">
               ↗
             </span>
@@ -57,14 +64,25 @@ const LocationSection = ({ locationOnly = false }: LocationSectionProps) => {
         </div>
       </div>
 
-      <div id="directions" className="min-h-110 bg-(--mist)">
+      <div
+        id="directions"
+        className={
+          locationOnly
+            ? "min-h-80 bg-(--mist) sm:min-h-96"
+            : "min-h-110 bg-(--mist)"
+        }
+      >
         <iframe
           src={siteConfig.contact.mapEmbedUrl}
           title={`${siteConfig.name} office map`}
           width="100%"
           height="100%"
           loading="lazy"
-          className="min-h-110 border-0 grayscale"
+          className={
+            locationOnly
+              ? "min-h-80 border-0 grayscale sm:min-h-96"
+              : "min-h-110 border-0 grayscale"
+          }
         />
       </div>
     </div>
