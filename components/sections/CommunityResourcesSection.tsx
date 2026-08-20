@@ -25,17 +25,21 @@ const CommunityResourcesSection = () => {
         </div>
       </div>
 
-      <ol className="mt-9 grid border-y border-(--line) lg:grid-cols-5">
+      <ol className="mt-9 grid border-y border-(--line) sm:grid-cols-2 xl:grid-cols-5">
         {communityResourceCategories.map((category, index) => (
           <li
             key={category.id}
             className={`border-(--line) ${
-              index ? "border-t lg:border-l lg:border-t-0" : ""
+              index ? "border-t" : ""
+            } ${index % 2 ? "sm:border-l" : ""} ${
+              index === 1 ? "sm:border-t-0" : ""
+            } ${
+              index ? "xl:border-l xl:border-t-0" : "xl:border-t-0"
             }`}
           >
             <Link
               href={`/community-resources#${category.id}`}
-              className="group flex h-full min-h-36 min-w-0 flex-col justify-between gap-5 p-5 transition hover:bg-white sm:p-6"
+              className="group flex h-full min-h-32 min-w-0 flex-col justify-between gap-5 p-5 transition hover:bg-white sm:p-6 xl:min-h-40"
             >
               <h3 className="break-words text-lg font-semibold leading-snug text-(--navy)">
                 {category.title}

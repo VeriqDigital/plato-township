@@ -14,6 +14,7 @@ export type CommunityResource = {
   title: string;
   description: string;
   resourceType: string;
+  ctaLabel: string;
   href: string;
   external: true;
   phone?: string;
@@ -36,7 +37,7 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
     id: "fire-departments",
     title: "Fire Departments",
     description:
-      "Fire and emergency medical coverage depends on whether a property is in an incorporated or unincorporated part of Plato Township.",
+      "Plato Township identifies separate fire agencies for unincorporated areas and for areas located within Elgin city limits. Use the links below for non-emergency information.",
     callout:
       "For a fire, medical emergency, or immediate threat to safety, call 911. Use the agency contacts below for non-emergency information.",
     resources: [
@@ -44,27 +45,29 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         id: "pingree-grove-fire",
         title: "Pingree Grove & Countryside Fire Protection District",
         description:
-          "Fire protection, emergency medical services, prevention information, and district resources for unincorporated portions of Plato Township.",
+          "Department information, prevention resources, and non-emergency contacts for the district Plato Township identifies with unincorporated township areas.",
         resourceType: "Fire protection district",
+        ctaLabel: "Visit Pingree Grove Fire",
         href: "https://www.pgfpd.com/",
         external: true,
         phone: "847-741-3151",
         phoneHref: "tel:8477413151",
         phoneLabel: "Non-emergency",
-        note: "Service area: unincorporated portions of Plato Township.",
+        note: "Township-listed area: unincorporated portions of Plato Township.",
       },
       {
         id: "elgin-fire",
         title: "Elgin Fire Department",
         description:
-          "City fire, emergency medical, prevention, and public education information for Plato Township properties located within Elgin city limits.",
+          "Department information, prevention resources, and non-emergency contacts for areas Plato Township identifies as being within Elgin city limits.",
         resourceType: "City fire department",
+        ctaLabel: "Visit Elgin Fire",
         href: "https://elginil.gov/80/Fire",
         external: true,
         phone: "847-931-6175",
         phoneHref: "tel:8479316175",
         phoneLabel: "Administration",
-        note: "Service area: properties within the City of Elgin.",
+        note: "Township-listed area: within the City of Elgin.",
       },
     ],
   },
@@ -80,6 +83,7 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         description:
           "Current conditions and the extended National Weather Service point forecast for the Elgin area.",
         resourceType: "Local forecast",
+        ctaLabel: "View Elgin-area forecast",
         href: "https://forecast.weather.gov/MapClick.php?lat=42.0384&lon=-88.2858",
         external: true,
       },
@@ -89,6 +93,7 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         description:
           "Regional watches, warnings, advisories, forecasts, and weather-safety information for northeastern Illinois, including Kane County.",
         resourceType: "Weather alerts",
+        ctaLabel: "View NWS Chicago",
         href: "https://www.weather.gov/lot/",
         external: true,
       },
@@ -99,8 +104,7 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
     title: "Local News",
     description:
       "Links to county and regional news sources historically referenced by Plato Township. Each source maintains its own coverage and access policies.",
-    availabilityNote:
-      "Additional local publications will be added when current destinations can be confirmed.",
+    availabilityNote: "Only publications with current destinations are listed.",
     resources: [
       {
         id: "kane-county-connects",
@@ -108,6 +112,7 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         description:
           "Official news, announcements, and community information published by Kane County government.",
         resourceType: "County government news",
+        ctaLabel: "Visit Kane County Connects",
         href: "https://www.kanecountyconnects.com/",
         external: true,
       },
@@ -117,6 +122,7 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         description:
           "Local reporting and community coverage from the Kane County edition of Shaw Local News Network.",
         resourceType: "Regional news",
+        ctaLabel: "Visit Kane County Chronicle",
         href: "https://www.shawlocal.com/kane-county-chronicle/",
         external: true,
       },
@@ -126,6 +132,7 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         description:
           "Regional reporting for communities across northern Illinois and the northwest suburbs.",
         resourceType: "Regional news",
+        ctaLabel: "Visit Northwest Herald",
         href: "https://www.shawlocal.com/northwest-herald/",
         external: true,
       },
@@ -135,16 +142,15 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
     id: "trash",
     title: "Trash",
     description:
-      "Provider and county resources for residential garbage, recycling, yard waste, electronics, and special disposal questions.",
-    callout:
-      "LRS is an external service provider, not a Plato Township department. Confirm current schedules and collection requirements directly with the provider.",
+      "For routine residential garbage, recycling, and yard waste service, use the LRS resource below. Kane County Recycles provides drop-off and special-material guidance.",
     resources: [
       {
         id: "lrs-plato-township",
         title: "LRS — Plato Township Residential Services",
         description:
-          "Current provider information for Plato Township garbage, recycling, yard waste, bulk items, electronic waste, and customer support.",
-        resourceType: "External waste provider",
+          "LRS is the external provider for Plato Township residential garbage, recycling, and yard waste service. Confirm current schedules and collection requirements directly with LRS.",
+        resourceType: "Residential collection provider",
+        ctaLabel: "Visit LRS",
         href: "https://www.lrsrecycles.com/municipality/plato-township/",
         external: true,
         phone: "844-633-3577",
@@ -155,9 +161,10 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         id: "kane-county-recycles",
         title: "Kane County Recycles",
         description:
-          "County guidance for recycling locations, household hazardous waste, electronics, and other materials that require special handling.",
-        resourceType: "County disposal guidance",
-        href: "https://www.kanecountyil.gov/Recycling/Pages/default.aspx",
+          "County guidance for drop-off locations, household hazardous waste, electronics, and other materials requiring special handling. This is separate from routine residential pickup.",
+        resourceType: "Special recycling and disposal",
+        ctaLabel: "View Kane County Recycles",
+        href: "https://www.kanecountyil.gov/Recycling",
         external: true,
       },
     ],
@@ -166,9 +173,7 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
     id: "plato-park",
     title: "Plato Park",
     description:
-      "Township park, recreation, and Depot Museum resources for residents and visitors.",
-    callout:
-      "The Township identifies the park on Stonecrest Drive, off Russell Road in Plato Center. Check the official park page for current access details.",
+      "Township information for Plato Park and the Illinois Central Railroad Depot Museum on Stonecrest Drive, just off Russell Road in Plato Center.",
     resources: [
       {
         id: "plato-park-and-depot",
@@ -176,12 +181,12 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         description:
           "Township information about the park's open space, athletic fields, playground, covered pavilion, and Illinois Central Railroad Depot Museum.",
         resourceType: "Township park",
+        ctaLabel: "Visit Plato Park",
         href: "https://www.platotownship.com/content/park/",
         external: true,
         phone: "847-464-4228",
         phoneHref: "tel:8474644228",
         phoneLabel: "Township office",
-        note: "Location: Stonecrest Drive, off Russell Road in Plato Center.",
       },
       {
         id: "central-district-baseball",
@@ -189,6 +194,7 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         description:
           "Youth baseball organization identified by the Township as a user of Plato Park fields.",
         resourceType: "Recreation program",
+        ctaLabel: "Visit CDBL",
         href: "https://www.cdbaseball.org/",
         external: true,
       },
@@ -198,6 +204,7 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         description:
           "Prairie Knolls and Central Middle School cross-country and track information linked from the Township's park resources.",
         resourceType: "School athletics",
+        ctaLabel: "Visit Central 301 athletics",
         href: "https://msrun.central301.net/home",
         external: true,
       },

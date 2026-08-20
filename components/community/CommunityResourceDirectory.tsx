@@ -26,6 +26,7 @@ function ExternalResourceLink({ resource }: { resource: CommunityResource }) {
             <span>{resource.phoneLabel ?? "Phone"}:</span>
             <a
               href={resource.phoneHref}
+              aria-label={`Call ${resource.title} ${resource.phoneLabel?.toLowerCase() ?? "phone"} at ${resource.phone}`}
               className="inline-flex min-h-11 items-center font-semibold text-(--navy) underline decoration-(--line) underline-offset-4 transition hover:text-(--red)"
             >
               {resource.phone}
@@ -38,10 +39,9 @@ function ExternalResourceLink({ resource }: { resource: CommunityResource }) {
         href={resource.href}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={`Visit ${resource.title} (opens in a new tab)`}
-        className="inline-flex min-h-12 w-full min-w-0 items-center justify-between gap-4 border border-(--line) px-4 py-3 text-sm font-semibold text-(--navy) transition hover:border-(--red) hover:text-(--red) sm:w-fit sm:min-w-48"
+        className="inline-flex min-h-12 w-full min-w-0 max-w-full items-center justify-between gap-4 border border-(--line) px-4 py-3 text-sm font-semibold text-(--navy) transition hover:border-(--red) hover:text-(--red) sm:w-fit sm:min-w-52"
       >
-        <span className="min-w-0 break-words">Visit resource</span>
+        <span className="min-w-0 break-words">{resource.ctaLabel}</span>
         <span aria-hidden="true" className="shrink-0 text-(--red)">
           ↗
         </span>
@@ -69,12 +69,9 @@ export function CommunityResourceDirectory({
         >
           <div className="mx-auto grid max-w-(--container-width) gap-8 px-6 lg:grid-cols-[0.38fr_1fr] lg:gap-14">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-(--red-dark)">
-                Community resource
-              </p>
               <h2
                 id={`${category.id}-heading`}
-                className="mt-2 text-3xl font-semibold tracking-tight text-(--navy) sm:text-4xl"
+                className="text-3xl font-semibold tracking-tight text-(--navy) sm:text-4xl"
               >
                 {category.title}
               </h2>
