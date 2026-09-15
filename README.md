@@ -1,24 +1,17 @@
-# Plato Township Website Demo
+# Plato Township Website
 
-A modern first-pass civic website for Plato Township in Kane County, Illinois.
-The demo uses Next.js, React, TypeScript, and Tailwind CSS while preserving the
-original starter project structure.
+The Plato Township website for Kane County, Illinois, built with Next.js, React,
+TypeScript, and Tailwind CSS. It provides township information, announcements,
+meeting schedules and minutes, department contacts, and community resources.
 
-## Demo Scope
+## Tech Stack
 
-- Responsive township homepage with cinematic rural hero imagery
-- Desktop dropdown navigation and mobile accordion navigation
-- Sample announcement and meeting areas
-- Township department and community resource pathways
-- About, Departments, and Contact pages
-- Township phone directory, address, and map
-- Demo labeling for time-sensitive sample content
+- Next.js 16 with the App Router and React 19
+- TypeScript and Tailwind CSS 4
+- Vercel Analytics and Speed Insights
+- ESLint for code linting
 
-This phase is intentionally presentation-focused. Official township content,
-document feeds, forms, accessibility review, and any CMS or administrative tools
-should be handled in a later phase.
-
-## Running Locally
+## Local Development
 
 ```bash
 npm install
@@ -27,9 +20,35 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-## Checks
+Run linting and a production build before submitting changes:
 
 ```bash
 npm run lint
 npm run build
 ```
+
+## Content Maintenance
+
+- Township/global contact info and navigation: `config/site.ts`
+- Announcements: `data/announcements.ts`
+- Board meeting schedule: `data/board-meetings.ts`
+- Board minutes metadata: `data/board-minutes.ts`
+- Board minute PDF files: `public/board-meeting-minutes/`
+- Department information: `data/departments.ts`
+- Election resources: `data/elections.ts`
+- Community resources: `data/community-resources.ts`
+- Public images/documents: `public/`
+
+Announcement records marked `demo: true` are placeholder/demo content and must
+not be treated as official notices.
+
+Meeting schedules are currently data-driven and need to be updated when a new
+year's schedule is published.
+
+## Deployment
+
+The site is deployed through Vercel/Git integration.
+
+The canonical site URL comes from `siteConfig.url` in `config/site.ts` and must
+be set to the official production domain before public launch. The sitemap and
+robots metadata also use this URL.
