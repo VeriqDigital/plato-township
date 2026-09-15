@@ -85,9 +85,9 @@ export const navigation: NavigationItem[] = [
   {
     label: "More",
     items: [
-      { label: "Elections", href: "/about" },
+      { label: "Elections", href: "/elections" },
       { label: "Contact Us", href: "/contact" },
-      { label: "Archive", href: "/#postings" },
+      { label: "Archive", href: "/archive" },
     ],
   },
 ];

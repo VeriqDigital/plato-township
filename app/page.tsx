@@ -1,5 +1,3 @@
-import { Analytics } from "@vercel/analytics/next";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import AnnouncementsSection from "@/components/sections/AnnouncementsSection";
 import CommunityResourcesSection from "@/components/sections/CommunityResourcesSection";
 import DepartmentsSection from "@/components/sections/DepartmentsSection";
@@ -32,9 +30,6 @@ export default function Home() {
           <LocationSection />
         </div>
       </section>
-
-      <Analytics />
-      <SpeedInsights />
     </main>
   );
 }
