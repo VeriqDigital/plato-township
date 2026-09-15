@@ -6,6 +6,8 @@ import LocationSection from "@/components/sections/LocationSection";
 import MeetingsSection from "@/components/sections/MeetingsSection";
 import Section from "@/components/ui/Section";
 
+export const revalidate = 3600;
+
 export default function Home() {
   return (
     <main>
