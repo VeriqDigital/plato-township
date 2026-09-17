@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { footerLinks, siteConfig } from "@/config/site";
 
 const Footer = () => {
@@ -8,13 +9,20 @@ const Footer = () => {
         <div className="grid gap-12 border-b border-white/14 pb-14 lg:grid-cols-[1fr_1.3fr]">
           <div>
             <Link href="/" className="inline-flex items-center gap-4">
-              <span className="relative grid size-12 place-items-center border border-white/35 font-heading text-2xl">
-                P
-                <span className="absolute -right-1 -top-1 size-2.5 bg-(--red)" />
-              </span>
+              <Image
+                src="/logo-withbg.png"
+                alt=""
+                width={196}
+                height={82}
+                className="size-10 shrink-0 object-contain sm:size-30"
+              />
               <span>
-                <span className="block font-heading text-2xl uppercase tracking-[0.07em]">{siteConfig.name}</span>
-                <span className="mt-1 block text-[9px] uppercase tracking-[0.24em] text-white/45">Kane County, Illinois</span>
+                <span className="block font-heading text-2xl uppercase tracking-[0.07em]">
+                  {siteConfig.name}
+                </span>
+                <span className="mt-1 block text-[9px] uppercase tracking-[0.24em] text-white/45">
+                  Kane County, Illinois
+                </span>
               </span>
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-7 text-white/48">
@@ -25,33 +33,44 @@ const Footer = () => {
 
           <div className="grid gap-10 sm:grid-cols-2">
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/38">Explore</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/38">
+                Explore
+              </p>
               <div className="mt-5 grid gap-3">
                 {footerLinks.map((link) => (
-                  <Link key={link.label} href={link.href} className="text-sm text-white/62 transition hover:text-white">
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    className="text-sm text-white/62 transition hover:text-white"
+                  >
                     {link.label}
                   </Link>
                 ))}
               </div>
             </div>
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/38">Township office</p>
-              <p className="mt-5 text-sm leading-6 text-white/62">{siteConfig.contact.address}</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/38">
+                Township office
+              </p>
+              <p className="mt-5 text-sm leading-6 text-white/62">
+                {siteConfig.contact.address}
+              </p>
               <a
                 href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
                 className="mt-4 block font-heading text-2xl text-white"
               >
                 {siteConfig.contact.officePhone}
               </a>
-              <p className="mt-3 text-xs text-white/38">Please call ahead before visiting.</p>
+              <p className="mt-3 text-xs text-white/38">
+                Please call ahead before visiting.
+              </p>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-3 pt-6 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/35 sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; 2026 {siteConfig.name}. Demo website.</p>
+          <p>&copy; 2026 {siteConfig.name}.</p>
           <div className="flex flex-col gap-2 sm:items-end">
-            <p>Not an official source for township notices.</p>
             <p className="font-normal normal-case tracking-normal text-white/30">
               Website designed &amp; developed by{" "}
               <a

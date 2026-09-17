@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { navigation, siteConfig } from "@/config/site";
 
@@ -49,7 +50,10 @@ const Navbar = () => {
     };
 
     const handlePointerDown = (event: PointerEvent) => {
-      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+      if (
+        headerRef.current &&
+        !headerRef.current.contains(event.target as Node)
+      ) {
         suppressedHoverDropdown.current = null;
         setIsMenuOpen(false);
         setOpenDropdown(null);
@@ -91,10 +95,13 @@ const Navbar = () => {
           className="group flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3"
           onClick={closeNavigation}
         >
-          <span className="relative grid size-10 shrink-0 place-items-center border border-white/35 font-heading text-2xl font-semibold sm:size-11">
-            P
-            <span className="absolute -right-1 -top-1 size-2.5 bg-(--red)" />
-          </span>
+          <Image
+            src="/logo-withbg.png"
+            alt=""
+            width={196}
+            height={82}
+            className="size-10 shrink-0 object-contain sm:size-30"
+          />
           <span className="min-w-0 leading-none">
             <span className="block font-heading text-lg font-semibold uppercase tracking-[0.06em] min-[360px]:text-xl min-[360px]:tracking-[0.08em]">
               {siteConfig.name}
@@ -199,33 +206,35 @@ const Navbar = () => {
                     id={`desktop-submenu-${index}`}
                     className="absolute right-0 top-full min-w-64 border-t-2 border-(--red) bg-white p-2 text-(--navy) shadow-[0_22px_50px_rgba(4,18,36,0.28)]"
                   >
-                    {group.items.map((item) => item.href ? (
-                      <Link
-                        key={`${group.label}-${item.label}`}
-                        href={item.href}
-                        onClick={closeNavigation}
-                        className="group flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold transition hover:bg-(--mist)"
-                      >
-                        {item.label}
-                        <span
-                          aria-hidden="true"
-                          className="text-(--red) transition-transform group-hover:translate-x-1"
+                    {group.items.map((item) =>
+                      item.href ? (
+                        <Link
+                          key={`${group.label}-${item.label}`}
+                          href={item.href}
+                          onClick={closeNavigation}
+                          className="group flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold transition hover:bg-(--mist)"
                         >
-                          →
+                          {item.label}
+                          <span
+                            aria-hidden="true"
+                            className="text-(--red) transition-transform group-hover:translate-x-1"
+                          >
+                            →
+                          </span>
+                        </Link>
+                      ) : (
+                        <span
+                          key={`${group.label}-${item.label}`}
+                          aria-disabled="true"
+                          className="flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold text-(--ink-muted)"
+                        >
+                          {item.label}
+                          <span className="text-[10px] font-medium uppercase tracking-[0.1em] text-(--ink-muted)">
+                            Coming soon
+                          </span>
                         </span>
-                      </Link>
-                    ) : (
-                      <span
-                        key={`${group.label}-${item.label}`}
-                        aria-disabled="true"
-                        className="flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold text-(--ink-muted)"
-                      >
-                        {item.label}
-                        <span className="text-[10px] font-medium uppercase tracking-[0.1em] text-(--ink-muted)">
-                          Coming soon
-                        </span>
-                      </span>
-                    ))}
+                      ),
+                    )}
                   </div>
                 )}
               </div>
@@ -244,15 +253,23 @@ const Navbar = () => {
         <button
           type="button"
           className="ml-auto grid size-11 place-items-center border border-white/25 text-white transition hover:border-white lg:ml-4 min-[1320px]:hidden"
-          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-label={
+            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
           aria-expanded={isMenuOpen}
           aria-controls="mobile-primary-navigation"
           onClick={toggleMobileMenu}
         >
           <span className="grid gap-1.5" aria-hidden="true">
-            <span className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "translate-y-2 rotate-45" : ""}`} />
-            <span className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+            <span
+              className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "translate-y-2 rotate-45" : ""}`}
+            />
+            <span
+              className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+            />
           </span>
         </button>
       </nav>
@@ -314,25 +331,30 @@ const Navbar = () => {
                     </button>
                   )}
                   {isOpen && (
-                    <div id={`mobile-submenu-${index}`} className="grid gap-1 pb-4">
-                      {group.items.map((item) => item.href ? (
-                        <Link
-                          key={`${group.label}-mobile-${item.label}`}
-                          href={item.href}
-                          onClick={closeNavigation}
-                          className="flex min-h-11 items-center border-l border-(--red) py-2 pl-4 text-sm text-white/68 transition hover:bg-white/5 hover:text-white"
-                        >
-                          {item.label}
-                        </Link>
-                      ) : (
-                        <span
-                          key={`${group.label}-mobile-${item.label}`}
-                          aria-disabled="true"
-                          className="flex min-h-11 items-center border-l border-white/18 py-2 pl-4 text-sm text-white/40"
-                        >
-                          {item.label}
-                        </span>
-                      ))}
+                    <div
+                      id={`mobile-submenu-${index}`}
+                      className="grid gap-1 pb-4"
+                    >
+                      {group.items.map((item) =>
+                        item.href ? (
+                          <Link
+                            key={`${group.label}-mobile-${item.label}`}
+                            href={item.href}
+                            onClick={closeNavigation}
+                            className="flex min-h-11 items-center border-l border-(--red) py-2 pl-4 text-sm text-white/68 transition hover:bg-white/5 hover:text-white"
+                          >
+                            {item.label}
+                          </Link>
+                        ) : (
+                          <span
+                            key={`${group.label}-mobile-${item.label}`}
+                            aria-disabled="true"
+                            className="flex min-h-11 items-center border-l border-white/18 py-2 pl-4 text-sm text-white/40"
+                          >
+                            {item.label}
+                          </span>
+                        ),
+                      )}
                     </div>
                   )}
                 </div>
