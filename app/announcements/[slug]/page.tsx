@@ -19,6 +19,8 @@ type AnnouncementPageProps = {
   params: Promise<{ slug: string }>;
 };
 
+export const revalidate = 3600;
+
 export const dynamicParams = false;
 
 export function generateStaticParams() {
@@ -101,8 +103,8 @@ export default async function AnnouncementDetailPage({
           <div className="min-w-0">
             {archived && (
               <div className="mb-8 border-l-4 border-(--line) bg-(--mist) p-5 text-sm leading-7 text-(--ink-muted)">
-                <strong className="text-(--navy)">Archived notice.</strong>{" "}
-                This announcement expired after{" "}
+                <strong className="text-(--navy)">Archived notice.</strong> This
+                announcement expired after{" "}
                 {formatAnnouncementDate(announcement.expiresAt!)} and remains
                 available for reference.
               </div>

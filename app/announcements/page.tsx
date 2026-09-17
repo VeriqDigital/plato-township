@@ -12,6 +12,8 @@ import {
 const description =
   "Find current Plato Township notices, department updates, and previously published announcements.";
 
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Announcements",
   description,
