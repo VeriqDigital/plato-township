@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Oswald } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { siteConfig } from "@/config/site";
@@ -58,6 +60,8 @@ export default function RootLayout({
         <Navbar />
         <div className="flex-1">{children}</div>
         <Footer />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

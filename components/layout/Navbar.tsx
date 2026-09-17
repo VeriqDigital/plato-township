@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { navigation, siteConfig } from "@/config/site";
 
@@ -49,14 +50,17 @@ const Navbar = () => {
     };
 
     const handlePointerDown = (event: PointerEvent) => {
-      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+      if (
+        headerRef.current &&
+        !headerRef.current.contains(event.target as Node)
+      ) {
         suppressedHoverDropdown.current = null;
         setIsMenuOpen(false);
         setOpenDropdown(null);
       }
     };
 
-    const desktopViewport = window.matchMedia("(min-width: 1280px)");
+    const desktopViewport = window.matchMedia("(min-width: 1320px)");
     const handleViewportChange = (event: MediaQueryListEvent) => {
       if (event.matches) {
         suppressedHoverDropdown.current = null;
@@ -91,10 +95,13 @@ const Navbar = () => {
           className="group flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3"
           onClick={closeNavigation}
         >
-          <span className="relative grid size-10 shrink-0 place-items-center border border-white/35 font-heading text-2xl font-semibold sm:size-11">
-            P
-            <span className="absolute -right-1 -top-1 size-2.5 bg-(--red)" />
-          </span>
+          <Image
+            src="/logo-withbg.png"
+            alt=""
+            width={196}
+            height={82}
+            className="size-10 shrink-0 object-contain sm:size-30"
+          />
           <span className="min-w-0 leading-none">
             <span className="block font-heading text-lg font-semibold uppercase tracking-[0.06em] min-[360px]:text-xl min-[360px]:tracking-[0.08em]">
               {siteConfig.name}
@@ -105,7 +112,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <div className="ml-auto hidden h-full items-stretch xl:flex">
+        <div className="ml-auto hidden h-full items-stretch min-[1320px]:flex">
           {navigation.map((item, index) => {
             if (!("items" in item)) {
               return (
@@ -140,6 +147,16 @@ const Navbar = () => {
                   suppressedHoverDropdown.current = null;
                   setOpenDropdown(null);
                 }}
+                onBlur={(event) => {
+                  if (
+                    !event.currentTarget.contains(
+                      event.relatedTarget as Node | null,
+                    )
+                  ) {
+                    suppressedHoverDropdown.current = null;
+                    setOpenDropdown(null);
+                  }
+                }}
               >
                 {group.href ? (
                   <div
@@ -160,7 +177,6 @@ const Navbar = () => {
                       type="button"
                       onClick={() => toggleDropdown(index)}
                       aria-label={`Toggle ${group.label} menu`}
-                      aria-haspopup="menu"
                       aria-expanded={isOpen}
                       aria-controls={`desktop-submenu-${index}`}
                       className="flex h-full min-w-9 items-center justify-center pl-1"
@@ -172,7 +188,6 @@ const Navbar = () => {
                   <button
                     type="button"
                     onClick={() => toggleDropdown(index)}
-                    aria-haspopup="menu"
                     aria-expanded={isOpen}
                     aria-controls={`desktop-submenu-${index}`}
                     className={`flex items-center border-b-2 px-4 text-[13px] font-semibold transition-colors ${
@@ -189,38 +204,37 @@ const Navbar = () => {
                 {isOpen && (
                   <div
                     id={`desktop-submenu-${index}`}
-                    role="menu"
                     className="absolute right-0 top-full min-w-64 border-t-2 border-(--red) bg-white p-2 text-(--navy) shadow-[0_22px_50px_rgba(4,18,36,0.28)]"
                   >
-                    {group.items.map((item) => item.href ? (
-                      <Link
-                        key={`${group.label}-${item.label}`}
-                        href={item.href}
-                        role="menuitem"
-                        onClick={closeNavigation}
-                        className="group flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold transition hover:bg-(--mist)"
-                      >
-                        {item.label}
-                        <span
-                          aria-hidden="true"
-                          className="text-(--red) transition-transform group-hover:translate-x-1"
+                    {group.items.map((item) =>
+                      item.href ? (
+                        <Link
+                          key={`${group.label}-${item.label}`}
+                          href={item.href}
+                          onClick={closeNavigation}
+                          className="group flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold transition hover:bg-(--mist)"
                         >
-                          →
+                          {item.label}
+                          <span
+                            aria-hidden="true"
+                            className="text-(--red) transition-transform group-hover:translate-x-1"
+                          >
+                            →
+                          </span>
+                        </Link>
+                      ) : (
+                        <span
+                          key={`${group.label}-${item.label}`}
+                          aria-disabled="true"
+                          className="flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold text-(--ink-muted)"
+                        >
+                          {item.label}
+                          <span className="text-[10px] font-medium uppercase tracking-[0.1em] text-(--ink-muted)">
+                            Coming soon
+                          </span>
                         </span>
-                      </Link>
-                    ) : (
-                      <span
-                        key={`${group.label}-${item.label}`}
-                        role="menuitem"
-                        aria-disabled="true"
-                        className="flex items-center justify-between gap-6 px-4 py-3 text-sm font-semibold text-(--ink-muted)"
-                      >
-                        {item.label}
-                        <span className="text-[10px] font-medium uppercase tracking-[0.1em] text-(--ink-muted)">
-                          Coming soon
-                        </span>
-                      </span>
-                    ))}
+                      ),
+                    )}
                   </div>
                 )}
               </div>
@@ -230,23 +244,32 @@ const Navbar = () => {
 
         <Link
           href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
-          className="ml-auto hidden border border-white/25 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-(--red) hover:bg-(--red) lg:inline-flex xl:ml-4"
+          aria-label={`Call the Township Office at ${siteConfig.contact.officePhone}`}
+          className="ml-auto hidden border border-white/25 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-(--red) hover:bg-(--red) lg:inline-flex min-[1320px]:ml-4"
         >
           {siteConfig.contact.officePhone}
         </Link>
 
         <button
           type="button"
-          className="ml-auto grid size-11 place-items-center border border-white/25 text-white transition hover:border-white lg:ml-4 xl:hidden"
-          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          className="ml-auto grid size-11 place-items-center border border-white/25 text-white transition hover:border-white lg:ml-4 min-[1320px]:hidden"
+          aria-label={
+            isMenuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
           aria-expanded={isMenuOpen}
           aria-controls="mobile-primary-navigation"
           onClick={toggleMobileMenu}
         >
           <span className="grid gap-1.5" aria-hidden="true">
-            <span className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "translate-y-2 rotate-45" : ""}`} />
-            <span className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "opacity-0" : ""}`} />
-            <span className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+            <span
+              className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "translate-y-2 rotate-45" : ""}`}
+            />
+            <span
+              className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "opacity-0" : ""}`}
+            />
+            <span
+              className={`block h-0.5 w-5 bg-current transition ${isMenuOpen ? "-translate-y-2 -rotate-45" : ""}`}
+            />
           </span>
         </button>
       </nav>
@@ -254,7 +277,7 @@ const Navbar = () => {
       {isMenuOpen && (
         <div
           id="mobile-primary-navigation"
-          className="max-h-[calc(100svh-5rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-(--navy) px-5 pb-7 text-white xl:hidden"
+          className="max-h-[calc(100svh-5rem)] overflow-y-auto overscroll-contain border-t border-white/10 bg-(--navy) px-5 pb-7 text-white min-[1320px]:hidden"
         >
           <div className="mx-auto max-w-(--container-width)">
             {navigation.map((item, index) => {
@@ -308,25 +331,30 @@ const Navbar = () => {
                     </button>
                   )}
                   {isOpen && (
-                    <div id={`mobile-submenu-${index}`} className="grid gap-1 pb-4">
-                      {group.items.map((item) => item.href ? (
-                        <Link
-                          key={`${group.label}-mobile-${item.label}`}
-                          href={item.href}
-                          onClick={closeNavigation}
-                          className="flex min-h-11 items-center border-l border-(--red) py-2 pl-4 text-sm text-white/68 transition hover:bg-white/5 hover:text-white"
-                        >
-                          {item.label}
-                        </Link>
-                      ) : (
-                        <span
-                          key={`${group.label}-mobile-${item.label}`}
-                          aria-disabled="true"
-                          className="flex min-h-11 items-center border-l border-white/18 py-2 pl-4 text-sm text-white/40"
-                        >
-                          {item.label}
-                        </span>
-                      ))}
+                    <div
+                      id={`mobile-submenu-${index}`}
+                      className="grid gap-1 pb-4"
+                    >
+                      {group.items.map((item) =>
+                        item.href ? (
+                          <Link
+                            key={`${group.label}-mobile-${item.label}`}
+                            href={item.href}
+                            onClick={closeNavigation}
+                            className="flex min-h-11 items-center border-l border-(--red) py-2 pl-4 text-sm text-white/68 transition hover:bg-white/5 hover:text-white"
+                          >
+                            {item.label}
+                          </Link>
+                        ) : (
+                          <span
+                            key={`${group.label}-mobile-${item.label}`}
+                            aria-disabled="true"
+                            className="flex min-h-11 items-center border-l border-white/18 py-2 pl-4 text-sm text-white/40"
+                          >
+                            {item.label}
+                          </span>
+                        ),
+                      )}
                     </div>
                   )}
                 </div>
@@ -334,6 +362,7 @@ const Navbar = () => {
             })}
             <Link
               href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
+              aria-label={`Call the Township Office at ${siteConfig.contact.officePhone}`}
               className="mt-6 flex min-h-14 w-full flex-col items-start justify-center gap-1 bg-white px-5 py-3 text-sm font-bold text-(--navy) min-[360px]:flex-row min-[360px]:items-center min-[360px]:justify-between"
             >
               Call the Township Office
