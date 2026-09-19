@@ -1,7 +1,7 @@
 import {
-  DepartmentAvailability,
   DepartmentLinks,
   DepartmentPage,
+  DepartmentPerson,
   DepartmentSection,
 } from "@/components/departments/DepartmentPage";
 import { departmentMetadata } from "@/components/departments/departmentMetadata";
@@ -52,10 +52,9 @@ export default function BoardOfTrusteesPage() {
         title="Trustee Information"
         className="mt-12"
       >
-        <DepartmentAvailability title="Roster confirmation needed">
-          Trustee names and term information will be posted after the current
-          roster is confirmed by the township.
-        </DepartmentAvailability>
+        {boardOfTrustees.trustees.map((name) => (
+          <DepartmentPerson key={name} name={name} title="Township Trustee" />
+        ))}
       </DepartmentSection>
     </DepartmentPage>
   );

@@ -5,6 +5,7 @@ export const announcementCategories = [
   "Township Clerk",
   "Cemetery District",
   "Board / Meetings",
+  "Community Events",
   "General",
 ] as const;
 
@@ -34,78 +35,29 @@ export type Announcement = {
 
 // Minimum required fields: slug, title, summary, body, category, and publishedAt.
 // expiresAt is the final America/Chicago calendar date the notice stays current.
-// Demo announcements are non-operational and should be replaced before launch.
 export const announcements: readonly Announcement[] = [
   {
-    slug: "seasonal-road-maintenance-update",
-    title: "Seasonal road maintenance update",
+    slug: "mobile-dmv-event-sycamore-october-14-2026",
+    title: "Mobile DMV Event in Sycamore – October 14",
     summary:
-      "Sample content showing where residents can find confirmed road-work locations, timing, and contact information.",
+      "A Mobile DMV event will be held in Sycamore for residents needing select driver's license, state ID, vehicle registration, and related services.",
     body: [
-      "This is a sample announcement for layout and workflow testing. It does not announce an active closure, construction schedule, or change in road conditions.",
-      "Before publishing a real Highway Department notice, replace this text with confirmed locations, dates, expected traffic impacts, and the appropriate resident contact route.",
+      "A Mobile DMV event will be held on Wednesday, October 14, 2026, from 10:00 AM to 2:00 PM at the DeKalb County Farm Bureau, 1350 W. Prairie Drive, Sycamore, IL 60178.",
+      "Available services include REAL ID, driver's license renewal or correction, new or renewed State ID cards, vehicle registration and license plate sticker services, and organ and tissue donor registration.",
+      "Registration is required, and space is limited. Use the registration link below to register for the event.",
+      "Driver's tests will not be administered. Written and road tests are not available at Mobile DMV events.",
+      "Information shared with Plato Township by the Office of State Representative Jeff Keicher.",
     ],
-    category: "Highway Department",
-    publishedAt: "2026-08-15",
+    category: "Community Events",
+    publishedAt: "2026-09-18",
+    expiresAt: "2026-10-14",
     featured: true,
     externalLink: {
-      label: "Visit the Plato Township Road District website",
-      href: "https://www.platotownship.com/",
+      label: "Register for the Mobile DMV Event",
+      href: "https://repkeicher.com/sycamore-mobile-dmv-event/",
       fileType: "Web page",
       external: true,
     },
-    demo: true,
-  },
-  {
-    slug: "property-assessment-resources",
-    title: "Property assessment resources",
-    summary:
-      "Sample guidance showing how residents can be directed to Assessor information and property-search resources.",
-    body: [
-      "This sample notice demonstrates how the township can direct residents to assessment resources without duplicating or recreating the Assessor's property database.",
-      "A published notice should identify the specific resource being shared and should include only confirmed filing dates, requirements, and contact information.",
-    ],
-    category: "Assessor",
-    publishedAt: "2026-08-08",
-    attachment: {
-      label: "Review the online Property Search disclaimer",
-      href: "/departments/assessor/property-search",
-      fileType: "Web page",
-    },
-    demo: true,
-  },
-  {
-    slug: "public-notice-and-office-update",
-    title: "Public notice and office update",
-    summary:
-      "Sample content demonstrating how a time-sensitive township office notice can be presented without announcing a real closure or emergency.",
-    body: [
-      "This is a sample urgent notice used to test the announcement system's restrained priority treatment. There is no active office closure or emergency associated with this posting.",
-      "For a live notice, replace this copy with confirmed information, a clear effective date, any resident action required, and the township office contact route.",
-    ],
-    category: "Township Office",
-    publishedAt: "2026-08-01",
-    urgent: true,
-    demo: true,
-  },
-  {
-    slug: "archived-board-notice-example",
-    title: "Archived board notice example",
-    summary:
-      "Sample expired notice demonstrating how past township announcements remain available in the archive.",
-    body: [
-      "This sample record demonstrates automatic archive behavior. It does not describe a real meeting, deadline, or Board action.",
-      "The announcement remains available at its permanent URL after its expiration date, while no longer appearing in the homepage's current announcements.",
-    ],
-    category: "Board / Meetings",
-    publishedAt: "2026-05-01",
-    expiresAt: "2026-05-31",
-    attachment: {
-      label: "Browse published Board Minutes",
-      href: "/board-minutes",
-      fileType: "Web page",
-    },
-    demo: true,
   },
 ];
 
