@@ -57,8 +57,16 @@ export default function RootLayout({
       className={`${geistSans.variable} ${oswald.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded focus:bg-white focus:px-4 focus:py-3 focus:font-semibold focus:text-(--navy) focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <Navbar />
-        <div className="flex-1">{children}</div>
+        <div id="main-content" tabIndex={-1} className="flex-1">
+          {children}
+        </div>
         <Footer />
         <Analytics />
         <SpeedInsights />
