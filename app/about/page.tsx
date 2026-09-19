@@ -177,7 +177,7 @@ export default function AboutPage() {
               <figure key={image.src} className="mb-4 break-inside-avoid overflow-hidden bg-(--mist)">
                 <Image
                   src={image.src}
-                  alt="Plato Township community"
+                  alt=""
                   width={image.width}
                   height={image.height}
                   sizes="(min-width: 1024px) 32vw, (min-width: 640px) 50vw, 100vw"
