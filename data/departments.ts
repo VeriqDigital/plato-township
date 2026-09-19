@@ -422,6 +422,7 @@ export const propertySearchDisclaimer = [
 ] as const;
 
 export const boardOfTrustees = {
+  trustees: ["Greg Wessel", "Heather Wallace", "Jacob Myers", "Joe Hulke"],
   overview:
     "The Plato Township Board of Trustees, also called the Town Board, oversees and approves Township business. Residents can follow the Board through its published meeting schedule and meeting records.",
 } as const;
