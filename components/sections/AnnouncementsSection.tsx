@@ -1,9 +1,26 @@
+"use client";
+
 import Link from "next/link";
-import { AnnouncementListItem } from "@/components/announcements/AnnouncementComponents";
+import {
+  AnnouncementListItem,
+  FeaturedAnnouncement,
+} from "@/components/announcements/AnnouncementComponents";
+import { useAnnouncementDate } from "@/components/announcements/useAnnouncementDate";
 import { getHomepageAnnouncements } from "@/data/announcements";
 
-const AnnouncementsSection = () => {
-  const latestAnnouncements = getHomepageAnnouncements();
+const AnnouncementsSection = ({
+  initialCalendarDate,
+}: {
+  initialCalendarDate: string;
+}) => {
+  const referenceDate = useAnnouncementDate(initialCalendarDate);
+  const latestAnnouncements = getHomepageAnnouncements(3, referenceDate);
+  const featuredAnnouncement = latestAnnouncements.find(
+    (item) => item.featured || item.urgent,
+  );
+  const remainingAnnouncements = latestAnnouncements.filter(
+    (item) => item !== featuredAnnouncement,
+  );
 
   return (
     <div>
@@ -26,9 +43,18 @@ const AnnouncementsSection = () => {
         </div>
       </div>
 
-      {latestAnnouncements.length ? (
+      {featuredAnnouncement && (
+        <div className="mt-9">
+          <FeaturedAnnouncement
+            announcement={featuredAnnouncement}
+            headingLevel="h3"
+          />
+        </div>
+      )}
+
+      {remainingAnnouncements.length ? (
         <ol className="mt-9 grid border-y border-(--line) lg:grid-cols-3">
-          {latestAnnouncements.map((announcement, index) => (
+          {remainingAnnouncements.map((announcement, index) => (
             <li
               key={announcement.slug}
               className={
@@ -44,7 +70,7 @@ const AnnouncementsSection = () => {
             </li>
           ))}
         </ol>
-      ) : (
+      ) : !featuredAnnouncement ? (
         <div className="mt-9 border-y border-(--line) py-8">
           <p className="max-w-2xl text-base leading-7 text-(--ink-muted)">
             There are no current township announcements. Check the announcement
@@ -57,7 +83,7 @@ const AnnouncementsSection = () => {
             View the announcement archive
           </Link>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

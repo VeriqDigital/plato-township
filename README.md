@@ -42,6 +42,21 @@ npm run build
 Announcement records marked `demo: true` are placeholder/demo content and must
 not be treated as official notices.
 
+The `coat-drive-2026` record in `data/announcements.ts` supplies the temporary
+homepage feature and links to `public/coat-drive-2026.pdf`. Its `expiresAt` date
+is inclusive: it remains current through October 12, 2026 in America/Chicago
+and moves to the announcement archive at midnight on October 13 (05:00 UTC).
+Remove that record to remove the notice entirely; retain the PDF while any
+published links to it are still needed.
+
+The homepage and announcement routes render at request time so cached HTML
+cannot extend an expiration. The homepage hydrates with the server's Chicago
+date, then tracks the Chicago date in the browser at minute boundaries and
+on tab return, so an open page also drops expired notices without a reload.
+Featured notices reuse the announcement card and PDF resource link components.
+Run `node --test tests/announcements.test.mjs` with Node 22.18+ to check the
+inclusive Chicago date boundary and daylight saving handling.
+
 Meeting schedules are currently data-driven and need to be updated when a new
 year's schedule is published.
 
