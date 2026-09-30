@@ -1,3 +1,4 @@
+import { connection } from "next/server";
 import AnnouncementsSection from "@/components/sections/AnnouncementsSection";
 import CommunityResourcesSection from "@/components/sections/CommunityResourcesSection";
 import DepartmentsSection from "@/components/sections/DepartmentsSection";
@@ -5,16 +6,19 @@ import Hero from "@/components/sections/Hero";
 import LocationSection from "@/components/sections/LocationSection";
 import MeetingsSection from "@/components/sections/MeetingsSection";
 import Section from "@/components/ui/Section";
+import { getPlatoTownshipCalendarDate } from "@/data/announcements";
 
-export const revalidate = 3600;
-
-export default function Home() {
+export default async function Home() {
+  // Expiring notices must use the request date, not a cached build/ISR date.
+  await connection();
   return (
     <main>
       <Hero />
 
       <Section id="postings" className="bg-(--warm-white)">
-        <AnnouncementsSection />
+        <AnnouncementsSection
+          initialCalendarDate={getPlatoTownshipCalendarDate()}
+        />
       </Section>
 
       <MeetingsSection />

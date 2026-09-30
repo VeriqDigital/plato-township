@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import {
   AnnouncementListItem,
   FeaturedAnnouncement,
@@ -11,8 +12,6 @@ import {
 
 const description =
   "Find current Plato Township notices, department updates, and previously published announcements.";
-
-export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Announcements",
@@ -30,7 +29,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AnnouncementsPage() {
+export default async function AnnouncementsPage() {
+  await connection();
   const currentAnnouncements = getActiveAnnouncements();
   const archivedAnnouncements = getArchivedAnnouncements();
   const priorityAnnouncement = getPriorityAnnouncement();

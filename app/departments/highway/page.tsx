@@ -179,15 +179,15 @@ export default function HighwayDepartmentPage() {
       <DepartmentSection
         id="highway-resources"
         title="Highway Resources"
-        intro="The separate Road District website continues to publish road postings, permit information, project updates, inspection reports, and other Highway Department material."
+        intro="During the transition to this website, additional Highway Department information remains available on the existing Plato Township website."
         className="mt-12"
       >
         <DepartmentLinks
           links={[
             {
-              title: "Plato Township Road District",
+              title: "Visit platotownship.com",
               description:
-                "Visit the external Road District website for current road postings, permits, projects, and reports.",
+                "Find additional Highway Department information on the existing Plato Township website.",
               href: highwayDepartment.website,
               external: true,
             },

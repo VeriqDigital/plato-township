@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -18,8 +19,6 @@ import {
 type AnnouncementPageProps = {
   params: Promise<{ slug: string }>;
 };
-
-export const revalidate = 3600;
 
 export const dynamicParams = false;
 
@@ -60,6 +59,7 @@ export async function generateMetadata({
 export default async function AnnouncementDetailPage({
   params,
 }: AnnouncementPageProps) {
+  await connection();
   const { slug } = await params;
   const announcement = getAnnouncementBySlug(slug);
 

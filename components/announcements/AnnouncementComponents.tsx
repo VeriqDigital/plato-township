@@ -78,27 +78,36 @@ export function AnnouncementListItem({
 
 export function FeaturedAnnouncement({
   announcement,
+  headingLevel = "h2",
 }: {
   announcement: Announcement;
+  headingLevel?: "h2" | "h3";
 }) {
+  const Heading = headingLevel;
   return (
     <article className="border-l-4 border-(--red) bg-(--mist) p-6 sm:p-8">
       <AnnouncementMeta announcement={announcement} />
-      <h2 className="mt-5 max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-(--navy) sm:text-4xl">
+      <Heading className="mt-5 max-w-3xl text-3xl font-semibold leading-tight tracking-tight text-(--navy) sm:text-4xl">
         {announcement.title}
-      </h2>
+      </Heading>
       <p className="mt-4 max-w-3xl text-base leading-8 text-(--ink-muted)">
         {announcement.summary}
       </p>
-      <Link
-        href={`/announcements/${announcement.slug}`}
-        className="mt-6 inline-flex min-h-11 items-center bg-(--navy) px-5 py-3 text-sm font-bold text-white transition hover:bg-(--red-dark)"
-      >
-        Read full announcement
-        <span aria-hidden="true" className="ml-2">
-          →
-        </span>
-      </Link>
+      {announcement.attachment ? (
+        <div className="mt-4 max-w-xl">
+          <AnnouncementResourceLink resource={announcement.attachment} />
+        </div>
+      ) : (
+        <Link
+          href={`/announcements/${announcement.slug}`}
+          className="mt-6 inline-flex min-h-11 items-center bg-(--navy) px-5 py-3 text-sm font-bold text-white transition hover:bg-(--red-dark)"
+        >
+          Read full announcement
+          <span aria-hidden="true" className="ml-2">
+            →
+          </span>
+        </Link>
+      )}
     </article>
   );
 }

@@ -36,6 +36,26 @@ export type Announcement = {
 // Minimum required fields: slug, title, summary, body, category, and publishedAt.
 // expiresAt is the final America/Chicago calendar date the notice stays current.
 export const announcements: readonly Announcement[] = [
+  // Temporary homepage feature: current through October 12 in America/Chicago.
+  {
+    slug: "coat-drive-2026",
+    title: "2026 Coat Drive",
+    summary:
+      "Hosted by State Senator Don DeWitte. September 28 – October 12, 2026. New and gently used coats for people of all ages are accepted.",
+    body: [
+      "State Senator Don DeWitte is hosting the 2026 Coat Drive from September 28 through October 12, 2026. New and gently used coats for people of all ages are accepted.",
+      "View the coat-drive flyer for complete donation locations and details.",
+    ],
+    category: "Community Events",
+    publishedAt: "2026-09-29",
+    expiresAt: "2026-10-12",
+    featured: true,
+    attachment: {
+      label: "View Coat Drive Flyer",
+      href: "/coat-drive-2026.pdf",
+      fileType: "PDF",
+    },
+  },
   {
     slug: "mobile-dmv-event-sycamore-october-14-2026",
     title: "Mobile DMV Event in Sycamore – October 14",
