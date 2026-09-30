@@ -8,22 +8,19 @@ const Footer = () => {
       <div className="mx-auto max-w-(--container-width) px-6 py-16 sm:py-20">
         <div className="grid gap-12 border-b border-white/14 pb-14 lg:grid-cols-[1fr_1.3fr]">
           <div>
-            <Link href="/" className="inline-flex items-center gap-4">
+            <Link
+              href="/"
+              aria-label="Plato Township home"
+              className="inline-flex max-w-full bg-(--warm-white) px-4 py-3"
+            >
               <Image
-                src="/logo-withbg.png"
+                src="/Logo final 2026.png"
                 alt=""
-                width={196}
-                height={82}
-                className="size-10 shrink-0 object-contain sm:size-30"
+                width={975}
+                height={406}
+                sizes="240px"
+                className="h-auto w-60 max-w-full"
               />
-              <span>
-                <span className="block font-heading text-2xl uppercase tracking-[0.07em]">
-                  {siteConfig.name}
-                </span>
-                <span className="mt-1 block text-[9px] uppercase tracking-[0.24em] text-white/45">
-                  Kane County, Illinois
-                </span>
-              </span>
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-7 text-white/48">
               Local information, public services, and community resources for

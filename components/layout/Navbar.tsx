@@ -83,7 +83,7 @@ const Navbar = () => {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 w-full border-b border-white/10 bg-(--navy) text-white shadow-[0_12px_32px_rgba(6,20,39,0.16)]"
+      className="sticky top-0 z-50 w-full border-b border-(--line) bg-(--warm-white) text-(--navy) shadow-[0_12px_32px_rgba(6,20,39,0.16)]"
     >
       <nav
         aria-label="Primary navigation"
@@ -96,20 +96,14 @@ const Navbar = () => {
           onClick={closeNavigation}
         >
           <Image
-            src="/logo-withbg.png"
+            src="/Logo final 2026.png"
             alt=""
-            width={196}
-            height={82}
-            className="size-10 shrink-0 object-contain sm:size-30"
+            width={975}
+            height={406}
+            sizes="168px"
+            preload
+            className="h-auto w-42 shrink-0"
           />
-          <span className="min-w-0 leading-none">
-            <span className="block font-heading text-lg font-semibold uppercase tracking-[0.06em] min-[360px]:text-xl min-[360px]:tracking-[0.08em]">
-              {siteConfig.name}
-            </span>
-            <span className="mt-1.5 hidden text-[9px] font-semibold uppercase tracking-[0.28em] text-white/55 min-[360px]:block">
-              Kane County, Illinois
-            </span>
-          </span>
         </Link>
 
         <div className="ml-auto hidden h-full items-stretch min-[1320px]:flex">
@@ -124,7 +118,7 @@ const Navbar = () => {
                     setOpenDropdown(null);
                   }}
                   onFocus={() => setOpenDropdown(null)}
-                  className="flex items-center border-b-2 border-transparent px-4 text-[13px] font-semibold text-white/76 transition-colors hover:text-white"
+                  className="flex items-center border-b-2 border-transparent px-4 text-[13px] font-semibold text-(--navy)/80 transition-colors hover:text-(--red)"
                 >
                   {item.label}
                 </Link>
@@ -162,8 +156,8 @@ const Navbar = () => {
                   <div
                     className={`flex items-center border-b-2 px-4 text-[13px] font-semibold transition-colors ${
                       isOpen
-                        ? "border-(--red) bg-white/5 text-white"
-                        : "border-transparent text-white/76 hover:text-white"
+                        ? "border-(--red) bg-(--mist) text-(--navy)"
+                        : "border-transparent text-(--navy)/80 hover:text-(--red)"
                     }`}
                   >
                     <Link
@@ -192,8 +186,8 @@ const Navbar = () => {
                     aria-controls={`desktop-submenu-${index}`}
                     className={`flex items-center border-b-2 px-4 text-[13px] font-semibold transition-colors ${
                       isOpen
-                        ? "border-(--red) bg-white/5 text-white"
-                        : "border-transparent text-white/76 hover:text-white"
+                        ? "border-(--red) bg-(--mist) text-(--navy)"
+                        : "border-transparent text-(--navy)/80 hover:text-(--red)"
                     }`}
                   >
                     {group.label}
@@ -245,14 +239,14 @@ const Navbar = () => {
         <Link
           href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
           aria-label={`Call the Township Office at ${siteConfig.contact.officePhone}`}
-          className="ml-auto hidden border border-white/25 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:border-(--red) hover:bg-(--red) lg:inline-flex min-[1320px]:ml-4"
+          className="ml-auto hidden shrink-0 whitespace-nowrap border border-(--navy)/25 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-(--navy) transition hover:border-(--red) hover:bg-(--red) hover:text-white lg:inline-flex min-[1320px]:ml-4"
         >
           {siteConfig.contact.officePhone}
         </Link>
 
         <button
           type="button"
-          className="ml-auto grid size-11 place-items-center border border-white/25 text-white transition hover:border-white lg:ml-4 min-[1320px]:hidden"
+          className="ml-auto grid size-11 shrink-0 place-items-center border border-(--navy)/25 text-(--navy) transition hover:border-(--red) lg:ml-4 min-[1320px]:hidden"
           aria-label={
             isMenuOpen ? "Close navigation menu" : "Open navigation menu"
           }
@@ -363,10 +357,10 @@ const Navbar = () => {
             <Link
               href={`tel:${siteConfig.contact.officePhone.replaceAll("-", "")}`}
               aria-label={`Call the Township Office at ${siteConfig.contact.officePhone}`}
-              className="mt-6 flex min-h-14 w-full flex-col items-start justify-center gap-1 bg-white px-5 py-3 text-sm font-bold text-(--navy) min-[360px]:flex-row min-[360px]:items-center min-[360px]:justify-between"
+              className="mt-6 flex min-h-14 w-full flex-col items-start justify-center gap-1 bg-white px-5 py-3 text-sm font-bold text-(--navy) sm:flex-row sm:items-center sm:justify-between"
             >
               Call the Township Office
-              <span>{siteConfig.contact.officePhone}</span>
+              <span className="shrink-0 whitespace-nowrap">{siteConfig.contact.officePhone}</span>
             </Link>
           </div>
         </div>
