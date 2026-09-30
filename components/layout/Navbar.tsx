@@ -87,7 +87,7 @@ const Navbar = () => {
     >
       <nav
         aria-label="Primary navigation"
-        className="mx-auto flex h-20 w-full max-w-(--container-width) items-center px-5 sm:px-8"
+        className="mx-auto flex h-20 w-full max-w-(--container-width) items-center px-5 sm:px-8 min-[1320px]:h-22"
       >
         <Link
           href="/"
@@ -100,9 +100,9 @@ const Navbar = () => {
             alt=""
             width={975}
             height={406}
-            sizes="168px"
+            sizes="(min-width: 1320px) 192px, 168px"
             preload
-            className="h-auto w-42 shrink-0"
+            className="h-auto w-42 shrink-0 min-[1320px]:w-48"
           />
         </Link>
 

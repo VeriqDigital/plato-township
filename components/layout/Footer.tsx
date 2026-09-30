@@ -11,7 +11,7 @@ const Footer = () => {
             <Link
               href="/"
               aria-label="Plato Township home"
-              className="inline-flex max-w-full bg-(--warm-white) px-4 py-3"
+              className="inline-flex max-w-full"
             >
               <Image
                 src="/Logo final 2026.png"
@@ -20,6 +20,11 @@ const Footer = () => {
                 height={406}
                 sizes="240px"
                 className="h-auto w-60 max-w-full"
+                style={{
+                  // Outline the artwork without filling its transparent background.
+                  filter:
+                    "drop-shadow(0.5px 0 0 white) drop-shadow(-0.5px 0 0 white) drop-shadow(0 0.5px 0 white) drop-shadow(0 -0.5px 0 white)",
+                }}
               />
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-7 text-white/48">
