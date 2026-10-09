@@ -53,7 +53,23 @@ export default function BoardOfTrusteesPage() {
         className="mt-12"
       >
         {boardOfTrustees.trustees.map((name) => (
-          <DepartmentPerson key={name} name={name} title="Township Trustee" />
+          <DepartmentPerson
+            key={name}
+            name={name}
+            title="Township Trustee"
+            image={
+              name === boardOfTrustees.heatherWallace.name
+                ? boardOfTrustees.heatherWallace.image
+                : undefined
+            }
+          >
+            {name === boardOfTrustees.heatherWallace.name &&
+              boardOfTrustees.heatherWallace.biography.map((paragraph) => (
+                <span key={paragraph} className="mt-3 block first:mt-0">
+                  {paragraph}
+                </span>
+              ))}
+          </DepartmentPerson>
         ))}
       </DepartmentSection>
     </DepartmentPage>

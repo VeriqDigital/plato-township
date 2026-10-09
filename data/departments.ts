@@ -423,6 +423,20 @@ export const propertySearchDisclaimer = [
 
 export const boardOfTrustees = {
   trustees: ["Greg Wessel", "Heather Wallace", "Jacob Myers", "Joe Hulke"],
+  heatherWallace: {
+    name: "Heather Wallace",
+    image: {
+      src: "/trustees/heather-wallace.jpg",
+      alt: "Portrait of Heather Wallace, Plato Township Trustee",
+      width: 156,
+      height: 192,
+    },
+    biography: [
+      "Hello! My name is Heather (Hulke) Wallace. I was re-elected as Plato Township Trustee in April 2025. I have served in this role for many years. I have lived in Plato Township my entire life. I have been married to my husband for 35 years. I have 3 grown children and 1 grandchild.",
+      "I attended NIU where I got my teaching degree in Elementary Education. I have been a teacher for the past 29 years — teaching in Carpentersville School District for the last 27 years.",
+      "I love to travel and am an avid reader. I enjoy serving Plato Township in my capacity as Trustee and am trying to make a difference in our community.",
+    ],
+  },
   overview:
     "The Plato Township Board of Trustees, also called the Town Board, oversees and approves Township business. Residents can follow the Board through its published meeting schedule and meeting records.",
 } as const;

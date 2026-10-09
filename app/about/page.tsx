@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { townshipHistory } from "@/data/township-history";
 
 export const metadata: Metadata = {
   title: "About Plato Township",
@@ -117,34 +118,81 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto grid max-w-(--container-width) gap-10 px-6 lg:grid-cols-[0.72fr_1.28fr] lg:gap-14">
-          <div>
-            <h2 className="text-3xl font-semibold tracking-tight text-(--navy) sm:text-4xl">
-              Plato Township History
+      <section aria-labelledby="township-history" className="bg-white py-16 sm:py-20">
+        <div className="mx-auto grid max-w-(--container-width) gap-10 px-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:gap-14">
+          <div className="min-w-0">
+            <h2 id="township-history" className="text-3xl font-semibold tracking-tight text-(--navy) sm:text-4xl">
+              {townshipHistory.title}
             </h2>
+            <p className="mt-4 text-sm font-semibold leading-6 text-(--red-dark)">
+              {townshipHistory.subtitle}
+            </p>
+            <nav aria-label="Township history sections" className="mt-6 border-t border-(--line) pt-4">
+              <ul className="grid gap-x-5 sm:grid-cols-2 lg:grid-cols-1">
+                {townshipHistory.sections.map((section) => (
+                  <li key={section.id}>
+                    <a
+                      href={`#${section.id}`}
+                      className="flex min-h-11 items-center py-2 text-sm leading-6 text-(--navy) underline decoration-(--line) underline-offset-4 hover:text-(--red)"
+                    >
+                      {section.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
-          <article className="max-w-3xl">
-            <div className="space-y-6 text-base leading-8 text-(--ink-muted) sm:text-[1.0625rem]">
-              {historyParagraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-
-              <p className="border-y border-(--line) bg-(--warm-white) px-5 py-5 text-sm leading-7 text-(--ink-muted) sm:px-6 sm:text-base">
-                {registeredVoters}
-              </p>
-
-              {concludingHistoryParagraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
+          <article className="min-w-0 max-w-3xl">
+            <div className="space-y-12">
+              {townshipHistory.sections.map((section) => (
+                <section key={section.id} aria-labelledby={section.id}>
+                  <h3
+                    id={section.id}
+                    className="scroll-mt-28 border-t border-(--line) pt-5 text-2xl font-semibold tracking-tight text-(--navy)"
+                  >
+                    {section.title}
+                  </h3>
+                  <div className="mt-5 space-y-5 text-base leading-8 text-(--ink-muted) sm:text-[1.0625rem]">
+                    {section.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
+                </section>
               ))}
             </div>
-
-            <p className="mt-8 border-t border-(--line) pt-5 text-sm leading-6 text-(--ink-muted)">
-              Source: Historical Encyclopedia of Illinois (Edited by Newton
-              Bateman, LL.D. and Paul Selby, A.M.) and History of Kane County
-              Edited by Gen. John S. Wilcox. Chicago; Munsell Publishing
-              Company, 1904, pp. 715–716; transcribed by K. Torp.
+            <p className="mt-8 text-base font-semibold leading-7 text-(--navy)">
+              {townshipHistory.closing}
             </p>
+            <div className="mt-8 border-t border-(--line) pt-5 text-sm leading-6 text-(--ink-muted)">
+              <p>Updated township history supplied by Mike McMahon.</p>
+              <p className="mt-2">{townshipHistory.attribution}</p>
+            </div>
+
+            <details className="mt-10 border border-(--line) bg-(--warm-white) p-5 sm:p-6">
+              <summary className="cursor-pointer text-lg font-semibold text-(--navy) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--red)">
+                Original Historical Account
+              </summary>
+              <div className="mt-6 space-y-6 text-base leading-8 text-(--ink-muted) sm:text-[1.0625rem]">
+                {historyParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+
+                <p className="border-y border-(--line) bg-(--warm-white) px-5 py-5 text-sm leading-7 text-(--ink-muted) sm:px-6 sm:text-base">
+                  {registeredVoters}
+                </p>
+
+                {concludingHistoryParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </div>
+
+              <p className="mt-8 border-t border-(--line) pt-5 text-sm leading-6 text-(--ink-muted)">
+                Source: Historical Encyclopedia of Illinois (Edited by Newton
+                Bateman, LL.D. and Paul Selby, A.M.) and History of Kane County
+                Edited by Gen. John S. Wilcox. Chicago; Munsell Publishing
+                Company, 1904, pp. 715–716; transcribed by K. Torp.
+              </p>
+            </details>
           </article>
         </div>
       </section>
