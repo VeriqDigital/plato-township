@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/board-minutes",
     "/community-resources",
     "/contact",
+    "/documents",
     "/departments",
     "/departments/supervisor",
     "/departments/highway",

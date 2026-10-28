@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Plato Township",
   description:
     "Official information and community resources for Plato Township in Kane County, Illinois.",
-  url: "https://plato-township-demo.example.com",
+  url: "https://www.platotwp.gov",
   locale: "en_US",
   contact: {
     officePhone: "847-464-4228",
@@ -45,6 +45,7 @@ export const navigation: NavigationItem[] = [
     items: [
       { label: "Board Meetings", href: "/board-meetings" },
       { label: "Board Minutes", href: "/board-minutes" },
+      { label: "Documents & Records", href: "/documents" },
     ],
   },
   { label: "Announcements", href: "/announcements" },
@@ -95,6 +96,7 @@ export const navigation: NavigationItem[] = [
 export const footerLinks = [
   { label: "Township Postings", href: "/#postings" },
   { label: "Meetings", href: "/#meetings" },
+  { label: "Documents & Records", href: "/documents" },
   { label: "Departments", href: "/departments" },
   { label: "Community Links", href: "/community-resources" },
   { label: "Contact", href: "/contact" },
