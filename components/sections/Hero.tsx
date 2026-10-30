@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import { siteConfig } from "@/config/site";
+import { highwayDepartment } from "@/data/departments";
 
 const Hero = () => {
   return (
@@ -42,12 +43,15 @@ const Hero = () => {
             >
               Latest updates <span aria-hidden="true">→</span>
             </Link>
-            <Link
-              href="#departments"
+            <a
+              href={highwayDepartment.website}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-h-12 w-full items-center justify-between gap-4 border border-white/40 bg-white/5 px-6 py-4 text-xs font-bold uppercase tracking-[0.15em] backdrop-blur-sm transition hover:bg-white hover:text-(--navy) sm:w-auto sm:gap-8"
             >
-              Township departments <span aria-hidden="true">→</span>
-            </Link>
+              Highway website &amp; permits <span aria-hidden="true">↗</span>
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
           </div>
         </div>
       </Container>

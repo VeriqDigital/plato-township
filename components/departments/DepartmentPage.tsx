@@ -11,16 +11,19 @@ type DepartmentPageProps = {
   department: DepartmentProfile;
   children: ReactNode;
   contactNote?: string;
+  headerCallout?: ReactNode;
 };
 
 export function DepartmentPage({
   department,
   children,
   contactNote,
+  headerCallout,
 }: DepartmentPageProps) {
   return (
     <main>
       <DepartmentHero department={department} />
+      {headerCallout}
       <section className="bg-white py-12 sm:py-16">
         <div className="mx-auto grid max-w-(--container-width) gap-10 px-6 lg:grid-cols-[minmax(16rem,0.38fr)_minmax(0,1fr)] lg:gap-14">
           <DepartmentContactPanel

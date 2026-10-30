@@ -103,9 +103,18 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
     id: "local-news",
     title: "Local News",
     description:
-      "Links to county and regional news sources historically referenced by Plato Township. Each source maintains its own coverage and access policies.",
-    availabilityNote: "Only publications with current destinations are listed.",
+      "Community perspectives, county government updates, and local reporting from Kane County Speaks, Kane County Connects, Patch, and Spy News. Each source maintains its own coverage and access policies.",
     resources: [
+      {
+        id: "kane-county-speaks",
+        title: "Kane County Speaks",
+        description:
+          "Community perspectives and discussion of public issues affecting Kane County and Illinois.",
+        resourceType: "Community voices",
+        ctaLabel: "Visit Kane County Speaks",
+        href: "https://www.kanecountyspeaks.com/",
+        external: true,
+      },
       {
         id: "kane-county-connects",
         title: "Kane County Connects",
@@ -117,23 +126,23 @@ export const communityResourceCategories: readonly CommunityResourceCategory[] =
         external: true,
       },
       {
-        id: "kane-county-chronicle",
-        title: "Kane County Chronicle",
+        id: "patch-elgin",
+        title: "Patch",
         description:
-          "Local reporting and community coverage from the Kane County edition of Shaw Local News Network.",
-        resourceType: "Regional news",
-        ctaLabel: "Visit Kane County Chronicle",
-        href: "https://www.shawlocal.com/kane-county-chronicle/",
+          "Local news, community announcements, and events from Elgin Patch.",
+        resourceType: "Elgin-area news",
+        ctaLabel: "Visit Elgin Patch",
+        href: "https://patch.com/illinois/elgin",
         external: true,
       },
       {
-        id: "northwest-herald",
-        title: "Northwest Herald",
+        id: "spy-news",
+        title: "Spy News",
         description:
-          "Regional reporting for communities across northern Illinois and the northwest suburbs.",
+          "Local news, sports, and community coverage from WSPY in the Fox Valley region.",
         resourceType: "Regional news",
-        ctaLabel: "Visit Northwest Herald",
-        href: "https://www.shawlocal.com/northwest-herald/",
+        ctaLabel: "Visit WSPY News",
+        href: "https://www.wspynews.com/",
         external: true,
       },
     ],
