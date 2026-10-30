@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import {
-  DepartmentLinks,
   DepartmentPage,
   DepartmentPerson,
   DepartmentSection,
@@ -21,6 +20,33 @@ export default function HighwayDepartmentPage() {
     <DepartmentPage
       department={department}
       contactNote="Not every road within Plato Township is maintained by the Road District. Use the jurisdiction lists on this page before reporting a roadway concern."
+      headerCallout={
+        <section aria-labelledby="highway-website" className="border-b border-(--line) bg-(--mist) py-6 sm:py-8">
+          <div className="mx-auto max-w-(--container-width) px-6">
+            <div className="grid gap-5 border-l-4 border-(--red) pl-5 sm:pl-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-8">
+              <div>
+                <h2 id="highway-website" className="text-2xl font-semibold tracking-tight text-(--navy)">
+                  Highway Department Website &amp; Permits
+                </h2>
+                <p className="mt-2 max-w-2xl text-sm leading-7 text-(--ink-muted) sm:text-base">
+                  Visit the Highway Department&apos;s website for permitting information,
+                  additional resources, and department updates.
+                </p>
+              </div>
+              <a
+                href={highwayDepartment.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 w-full items-center justify-between gap-4 bg-(--red) px-5 py-3 text-sm font-semibold text-white transition hover:bg-(--red-dark) sm:w-fit"
+              >
+                <span>Visit Highway Department Website</span>
+                <span aria-hidden="true" className="shrink-0">↗</span>
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      }
     >
       <DepartmentSection
         id="highway-overview"
@@ -176,24 +202,6 @@ export default function HighwayDepartmentPage() {
         </div>
       </DepartmentSection>
 
-      <DepartmentSection
-        id="highway-resources"
-        title="Highway Resources"
-        intro="During the transition to this website, additional Highway Department information remains available on the existing Plato Township website."
-        className="mt-12"
-      >
-        <DepartmentLinks
-          links={[
-            {
-              title: "Visit platotownship.com",
-              description:
-                "Find additional Highway Department information on the existing Plato Township website.",
-              href: highwayDepartment.website,
-              external: true,
-            },
-          ]}
-        />
-      </DepartmentSection>
     </DepartmentPage>
   );
 }
