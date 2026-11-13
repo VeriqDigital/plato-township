@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
+import { connection } from "next/server";
 import MeetingSchedule from "@/components/meetings/MeetingSchedule";
 import { siteConfig } from "@/config/site";
+import { getDefaultMeetingYear } from "@/data/board-meetings";
 
 export const metadata: Metadata = {
   title: "Board Meetings",
-  description: "View the 2026 Plato Township Board meeting schedule and meeting location.",
+  description: "Browse Plato Township Board meeting schedules by year, including the official 2027 schedule, and find meeting times and location.",
 };
 
-export default function BoardMeetingsPage() {
+export default async function BoardMeetingsPage() {
+  // Choose the current Chicago year at request time, rather than build time.
+  await connection();
+
   return (
     <main>
       <header className="bg-(--navy) py-16 text-white sm:py-20">
@@ -44,16 +49,7 @@ export default function BoardMeetingsPage() {
             </div>
           </div>
 
-          <div className="mt-12 grid gap-8 lg:grid-cols-[0.38fr_1fr]">
-            <div>
-              <h2 className="text-3xl font-semibold tracking-tight text-(--navy)">2026 Meeting Schedule</h2>
-              <p className="mt-4 max-w-sm text-base leading-7 text-(--ink-muted)">
-                Regular meetings take place at the township hall. The Annual Town Meeting is listed separately within the schedule.
-              </p>
-            </div>
-
-            <MeetingSchedule />
-          </div>
+          <MeetingSchedule initialYear={getDefaultMeetingYear(new Date())} />
         </div>
       </section>
     </main>

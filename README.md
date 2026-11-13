@@ -23,6 +23,7 @@ Open `http://localhost:3000`.
 Run linting and a production build before submitting changes:
 
 ```bash
+node --test tests/*.test.mjs
 npm run lint
 npx tsc --noEmit
 npm run build
@@ -60,8 +61,24 @@ Featured notices reuse the announcement card and PDF resource link components.
 Run `node --test tests/announcements.test.mjs` with Node 22.18+ to check the
 inclusive Chicago date boundary and daylight saving handling.
 
-Meeting schedules are currently data-driven and need to be updated when a new
-year's schedule is published.
+### Meeting schedules
+
+Add each official year's explicit meeting records to `data/board-meetings.ts`
+and register them in `meetingSchedules`, keeping dates chronological and retaining
+previous years. Do not calculate dates from the regular meeting rule; use the
+township's published schedule, including the Annual Town Meeting and its time.
+The year selector and homepage's next three meetings use this shared registry.
+The schedule page defaults to the current America/Chicago year when published,
+or the latest published year otherwise. Upcoming meetings remain visible through
+their full Chicago calendar date, including across daylight saving changes.
+
+Place the original, unmodified official PDF in `public/meeting-schedules/` and
+set that year's optional `officialPdf` path (starting with `/meeting-schedules/`,
+without `public/`) only after verifying the file exists. The 2027 PDF is
+`public/meeting-schedules/Plato-Township-2027-Meeting-Schedule.pdf`.
+Omit `officialPdf` when the township has not supplied a PDF. Never fabricate a
+replacement. Run `node --test tests/*.test.mjs` with Node 22.18+ along with lint,
+type-check, and build before submitting schedule changes.
 
 ### Documents & Records
 
