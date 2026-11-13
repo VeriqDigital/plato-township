@@ -43,7 +43,7 @@ const MeetingsSection = () => {
           <div className="border-t border-white/20">
             {meetings.map((meeting) => (
               <article
-                key={`${meeting.month}-${meeting.day}`}
+                key={`${meeting.isoDate}-${meeting.type}`}
                 className="grid grid-cols-[3.75rem_minmax(0,1fr)] gap-4 border-b border-white/16 py-6 min-[375px]:grid-cols-[4.5rem_minmax(0,1fr)] min-[375px]:gap-6 sm:grid-cols-[6rem_minmax(0,1fr)_auto] sm:items-center"
               >
                 <div className="border-r border-white/18 pr-5 text-center">
@@ -69,7 +69,7 @@ const MeetingsSection = () => {
             ))}
             {currentDate && meetings.length === 0 && (
               <p className="border-b border-white/16 py-8 text-base text-white/70">
-                No additional 2026 meetings are currently scheduled.
+                No additional meetings are currently scheduled.
               </p>
             )}
           </div>
