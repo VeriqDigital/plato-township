@@ -22,6 +22,7 @@ export const boardMinutesByYear: BoardMinuteYear[] = [
       { date: "July 28, 2026", filename: "07. July 2026 Minutes.pdf" },
       { date: "August 25, 2026", filename: "08 Aug 2026Minutes - signed.pdf" },
       { date: "September 22, 2026", filename: "09. September 2026 Minutes - a.pdf" },
+      { date: "October 27, 2026", filename: "10. Oct 2026 Minutes.pdf" },
     ],
   },
   {
